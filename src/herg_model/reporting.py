@@ -341,6 +341,13 @@ def _scaffold_view(frame: pd.DataFrame, top_k: int = 15) -> pd.DataFrame:
 
 def write_final_report(path: str | Path, ctx: dict) -> Path:
     path = Path(path)
+
+    def fig(name: str, caption: str = "") -> str:
+        """Markdown image embed, relative to the report, only when the file exists."""
+        if not (path.parent / "figures" / name).exists():
+            return ""
+        return f"![{caption or name}](figures/{name})"
+
     results: pd.DataFrame = ctx["results"]
     ablation: pd.DataFrame = ctx["ablation"]
     stability: pd.DataFrame = ctx["stability"]
@@ -433,6 +440,8 @@ def write_final_report(path: str | Path, ctx: dict) -> Path:
         f"→ validation 기준 최고 fingerprint 구성은 **{ctx['best_fingerprint']}** 이며, "
         "이후 모든 `best fp + …` 실험은 해당 fingerprint를 사용한다.",
         "",
+        fig("experiment_comparison.png", "실험별 validation balanced accuracy"),
+        "",
         "## 4. 기준선과 descriptor 확장 비교 (Q2, Q3, Q4)",
         "",
         to_md(pd.DataFrame([
@@ -460,6 +469,8 @@ def write_final_report(path: str | Path, ctx: dict) -> Path:
         )]]),
         "",
         "`delta_balanced_accuracy`가 0 근처면 해당 그룹이 fingerprint 기준선에 추가 정보를 주지 못한 것이다.",
+        "",
+        fig("ablation.png", "descriptor 그룹별 ablation (E3 기준 delta)"),
         "",
         "## 6. 모델 비교 (Q5)",
         "",
@@ -493,6 +504,12 @@ def write_final_report(path: str | Path, ctx: dict) -> Path:
                 "threshold 0.5 결과": f"BA {final['metrics_at_0.5']['balanced_accuracy']:.4f}, "
                                       f"ROC-AUC {final['metrics_at_0.5']['roc_auc']:.4f}",
             }),
+            "",
+            fig("roc_pr_validation.png", "validation ROC/PR (실험별 최고 모델)"),
+            "",
+            fig("roc_pr_test.png", "test ROC/PR (test는 1회만 평가)"),
+            "",
+            fig("confusion_matrices.png", "혼동행렬 (positive class = hERG blocker)"),
             "",
             f"최종 모델은 train+val로 재적합했고 임계값은 validation에서 선택했다"
             f"({final.get('refit', 'train+val')}). test는 이 시점에 처음 평가되었다.",
@@ -540,6 +557,8 @@ def write_final_report(path: str | Path, ctx: dict) -> Path:
                 "보고서 §7) 성능이 낙관적으로 나오며, 위 차이는 **일반화 격차의 크기**를 보여줄 뿐 "
                 "어느 쪽이 더 좋은 모델인지를 말하지 않는다. 최종 모델 선택에는 scaffold split만 썼다.",
                 "",
+                fig("split_comparison.png", "scaffold split vs random split (validation BA)"),
+                "",
             ]
 
     lines += [
@@ -558,6 +577,8 @@ def write_final_report(path: str | Path, ctx: dict) -> Path:
             "seed 하나에서의 순위 차이를 과대해석하지 않기 위해 사용한다.",
             "",
             to_md(seed_summary),
+            "",
+            fig("seed_stability.png", "scaffold seed 3개에 대한 평균 ± 표준편차"),
         ]
     lines += [
         "",
@@ -568,6 +589,8 @@ def write_final_report(path: str | Path, ctx: dict) -> Path:
         "그룹 단위 중요도:",
         "",
         to_md(ctx["group_importance"]),
+        "",
+        fig("feature_importance_by_group.png", "descriptor 그룹별 permutation importance 합계"),
         "",
         "오분류 요약(validation):",
         "",
@@ -582,6 +605,8 @@ def write_final_report(path: str | Path, ctx: dict) -> Path:
         "Bemis–Murcko scaffold가 모두 서로 다르므로(설계상 그렇다), scaffold 단위 성능은 원소를 "
         "제거한 generic scaffold 계열로 묶어서만 계산할 수 있다. 이 표는 '어떤 chemotype 계열에서 "
         "오류가 몰리는가'를 보여준다.",
+        "",
+        fig("scaffold_performance.png", "generic scaffold 계열별 오류율과 scaffold 크기"),
         "",
         "## 10. 클래스 불균형 처리",
         "",

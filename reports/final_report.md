@@ -85,6 +85,8 @@
 
 → validation 기준 최고 fingerprint 구성은 **fcfp** 이며, 이후 모든 `best fp + …` 실험은 해당 fingerprint를 사용한다.
 
+![실험별 validation balanced accuracy](figures/experiment_comparison.png)
+
 ## 4. 기준선과 descriptor 확장 비교 (Q2, Q3, Q4)
 
 | 실험 | validation BA | ROC-AUC | 모델 | features |
@@ -115,6 +117,8 @@
 | A_charge | E3 + charge | lightgbm | 0.7653 | 0.7560 | -0.0093 | 0.8354 | 0.8376 | 0.0022 |
 
 `delta_balanced_accuracy`가 0 근처면 해당 그룹이 fingerprint 기준선에 추가 정보를 주지 못한 것이다.
+
+![descriptor 그룹별 ablation (E3 기준 delta)](figures/ablation.png)
 
 ## 6. 모델 비교 (Q5)
 
@@ -155,6 +159,12 @@
 - **confusion matrix (blocker = positive)**: TP 212, FP 42, FN 169, TN 412
 - **threshold 0.5 결과**: BA 0.7614, ROC-AUC 0.8475
 
+![validation ROC/PR (실험별 최고 모델)](figures/roc_pr_validation.png)
+
+![test ROC/PR (test는 1회만 평가)](figures/roc_pr_test.png)
+
+![혼동행렬 (positive class = hERG blocker)](figures/confusion_matrices.png)
+
 최종 모델은 train+val로 재적합했고 임계값은 validation에서 선택했다(train+val). test는 이 시점에 처음 평가되었다.
 
 **임계값 전이 실패 가능성:** validation에서 고른 임계값의 test BA가 기본 0.5보다 0.0294만큼 낮다. validation 835행(blocker 381행 규모)에서 임계값을 고르는 것 자체가 잡음에 민감하다는 뜻이며, 순위 지표(ROC-AUC/PR-AUC)는 validation과 test에서 거의 같다. 실제 사용 시 임계값은 별도의 보정 데이터로 정하고, 이 값은 'validation에서 고른 값'으로만 읽어야 한다.
@@ -169,6 +179,8 @@
 
 random split은 참고용이다. 같은 scaffold가 train/val/test에 걸쳐 있어(데이터 품질 보고서 §7) 성능이 낙관적으로 나오며, 위 차이는 **일반화 격차의 크기**를 보여줄 뿐 어느 쪽이 더 좋은 모델인지를 말하지 않는다. 최종 모델 선택에는 scaffold split만 썼다.
 
+![scaffold split vs random split (validation BA)](figures/split_comparison.png)
+
 ## 8. Scaffold 분할 반복 안정성 (Q6)
 
 상위 설정을 **scaffold split seed 3개**(42 = 위 표들의 기본 seed, 101, 2024)에서 다시 학습한 결과다. `count`가 3이면 세 seed 모두 실행된 것이고, `std`가 seed 간 변동성이다. seed 하나에서의 순위 차이를 과대해석하지 않기 위해 사용한다.
@@ -179,6 +191,8 @@ random split은 참고용이다. 같은 scaffold가 train/val/test에 걸쳐 있
 | A_lipophilicity | lightgbm | 0.7650 | 0.0044 | 3 |
 | A_surface_electronic | lightgbm | 0.7657 | 0.0061 | 3 |
 | E3 | lightgbm | 0.7576 | 0.0100 | 3 |
+
+![scaffold seed 3개에 대한 평균 ± 표준편차](figures/seed_stability.png)
 
 ## 9. 중요 피처와 오분류 패턴 (Q7)
 
@@ -224,6 +238,8 @@ random split은 참고용이다. 같은 scaffold가 train/val/test에 걸쳐 있
 | charge | 8 | 0.1620 | 0.0202 | 0.0254 |
 | existing_descriptor | 2 | 0.0533 | 0.0266 | 0.0270 |
 
+![descriptor 그룹별 permutation importance 합계](figures/feature_importance_by_group.png)
+
 오분류 요약(validation):
 
 | error_type | n | mean_probability |
@@ -253,6 +269,8 @@ random split은 참고용이다. 같은 scaffold가 train/val/test에 걸쳐 있
 | S15 | 4 | 2 | 0.5000 | 0.6481 | 0.7500 | 0.7500 | 1 | 0.2500 |
 
 scaffold 구조 문자열은 원본 구조의 재배포 제한 때문에 보고서에 넣지 않았다(`reports/scaffold_performance.csv`, 로컬 전용). scaffold split에서는 validation 분자의 Bemis–Murcko scaffold가 모두 서로 다르므로(설계상 그렇다), scaffold 단위 성능은 원소를 제거한 generic scaffold 계열로 묶어서만 계산할 수 있다. 이 표는 '어떤 chemotype 계열에서 오류가 몰리는가'를 보여준다.
+
+![generic scaffold 계열별 오류율과 scaffold 크기](figures/scaffold_performance.png)
 
 ## 10. 클래스 불균형 처리
 
