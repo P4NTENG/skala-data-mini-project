@@ -1,0 +1,151 @@
+# hERG blocker ML scaffold - single source of truth for every experiment.
+# label semantics are FIXED: label=0 -> hERG blocker (positive class), label=1 -> non-blocker.
+# `label` itself is the value stored in data/train.csv (a CSV float, so keys here are quoted).
+
+project:
+  name: herg-blocker-ml
+  seed: 42
+  # positive class used for every metric / plot / report
+  positive_class: blocker
+
+paths:
+  data: data/train.csv
+  reports: reports
+  artifacts: artifacts
+  cache: .cache/herg_model
+  figures: reports/figures
+
+data:
+  smiles_col: SMILES
+  label_col: label
+  label_meanings:
+    "0": blocker
+    "1": non_blocker
+  # descriptor columns already shipped in data/train.csv
+  existing_descriptors: [MolWt, clogp, sa_score, qed]
+  fingerprints:
+    ecfp:
+      prefix: ecfp_
+      size: 1024
+      generator: morgan
+      params: { radius: 2, fpSize: 1024 }
+    fcfp:
+      prefix: fcfp_
+      size: 1024
+      generator: morgan_features
+      params: { radius: 2, fpSize: 1024 }
+    ptfp:
+      prefix: ptfp_
+      size: 1024
+      generator: pattern
+      params: { fpSize: 1024 }
+  # re-derive fingerprints from SMILES and compare against the shipped columns
+  verify_fingerprints: true
+  # 0 (or negative) = verify every row; N > 0 = verify a deterministic random sample of N rows
+  fingerprint_verify_sample: 0
+  # salt stripping / neutralisation / tautomer canonicalisation are NOT applied on the main
+  # training path (they can change structure and label meaning); they are sensitivity-only.
+  standardization:
+    apply_in_main_path: false
+
+descriptors:
+  rdkit:
+    engine: rdkit
+    # 3D-dependent RDKit descriptors are excluded (dataset has no conformers)
+    exclude_3d: true
+    # drop descriptors that are constant / all-NaN on the *training* split only
+    drop_constant: true
+  # domain-knowledge groups used for ablation
+  groups:
+    - physicochemical
+    - lipophilicity
+    - polarity_hbond
+    - basic_amine
+    - charge
+    - aromaticity_shape
+    - surface_electronic
+  mordred:
+    enabled: true
+    ignore_3d: true
+    # descriptor dropped when its missing rate on the training split exceeds this value
+    max_missing_rate: 0.10
+    chunk_size: 250
+    cache: true
+    # 0 = serial (deterministic, avoids Windows spawn issues); N > 0 = N worker processes
+    nproc: 0
+
+split:
+  strategy: scaffold          # scaffold split is the primary generalisation test
+  include_random_reference: true
+  val_size: 0.10
+  test_size: 0.10
+  primary_seed: 42
+  seeds: [42, 101, 2024]
+  balance_classes: true
+  # acyclic molecules get the generic Bemis-Murcko scaffold so that they cannot
+  # leak across splits as an artificially unique group
+  generic_scaffold_for_acyclic: true
+
+models:
+  logistic_regression:
+    scaling: true
+    class_weight: balanced
+  random_forest:
+    scaling: false
+    class_weight: balanced_subsample
+  extra_trees:
+    scaling: false
+    class_weight: balanced
+  hist_gradient_boosting:
+    scaling: false
+  lightgbm:
+    scaling: false
+  xgboost:
+    scaling: false
+  svm:
+    scaling: true
+    class_weight: balanced
+
+optimization:
+  enabled: true
+  method: optuna
+  sampler: tpe
+  direction: maximize
+  metric: balanced_accuracy          # tuned on the validation split only
+  # number of hyper-parameter configurations per (experiment, model)
+  n_trials: { quick: 5, full: 40 }
+  timeout_seconds: { quick: 240, full: 3600 }
+  # models actually trained in each mode; "quick" documents the run that is checked in
+  models: { quick: [logistic_regression, random_forest, lightgbm], full: [logistic_regression, random_forest, extra_trees, hist_gradient_boosting, lightgbm, xgboost] }
+  # svm is always restricted to a subsample because it is O(n^2)
+  svm_max_samples: 3000
+
+evaluation:
+  metrics: [roc_auc, pr_auc, balanced_accuracy, precision, recall, f1, mcc, accuracy]
+  primary_metric: balanced_accuracy
+  default_threshold: 0.5
+  threshold_metric: balanced_accuracy
+  bootstrap:
+    enabled: true
+    n_resamples: 1000
+    unit: scaffold              # cluster bootstrap over Bemis-Murcko scaffolds
+    confidence: 0.95
+  class_imbalance:
+    compare_class_weight: true
+    compare_threshold_tuning: true
+    use_smote: false            # binary fingerprint vectors: resampling is not a sane default
+
+experiment:
+  mode: quick
+  fingerprint_verification: true
+  # E10: number of features kept by the model-based selector (train split only)
+  feature_selection:
+    method: extra_trees_importance
+    n_features: 300
+  parallel_jobs: -1
+  seed_repeats: 1               # >1 re-runs every experiment on the extra scaffold seeds
+
+runtime:
+  n_jobs: -1
+  cache: true
+  verbose: true

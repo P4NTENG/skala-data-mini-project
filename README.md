@@ -134,3 +134,20 @@ jupyter lab
 
 - Mordred descriptor documentation: <https://mordred-descriptor.github.io/documentation/master/descriptors.html>
 - RDKit documentation: <https://www.rdkit.org/docs/>
+
+---
+
+## 9. ML 실험 스캐폴드 (`docs/ml_goal.md` 구현)
+
+`configs/`, `src/herg_model/`, `scripts/`, `tests/` 는 fingerprint/descriptor 표현을
+동일한 scaffold split에서 통제 비교하기 위한 재현 가능한 ML 스캐폴드입니다.
+
+- 실행·설정·산출물 문서: **[`HERG_ML.md`](HERG_ML.md)**
+- 데이터 품질: [`reports/data_quality_report.md`](reports/data_quality_report.md)
+- descriptor 분석: [`reports/descriptor_report.md`](reports/descriptor_report.md)
+- 최종 결과: [`reports/final_report.md`](reports/final_report.md)
+
+> 이 스캐폴드는 `docs/ml_goal.md`의 고정 라벨 정의에 따라 **`label = 0`(hERG blocker)을
+> 양성 클래스**로 사용합니다. 위 2절 EDA가 사용한 `label = 1` 기준 F1과는 positive 클래스가
+> 반대이므로 지표를 직접 비교하면 안 됩니다.
+

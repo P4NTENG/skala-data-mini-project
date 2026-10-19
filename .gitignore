@@ -32,6 +32,15 @@ herg_validation/output/dataset_with_properties.csv
 # Unrelated notebook
 gigatime_eda.ipynb
 
+# ML scaffold (docs/ml_goal.md): caches and outputs that embed original SMILES
+.cache/
+reports/error_analysis.csv
+reports/error_analysis_test.csv
+reports/misclassified_cases.csv
+reports/misclassified_test.csv
+reports/scaffold_performance.csv
+reports/inference_examples.csv
+
 # OS / editor
 .DS_Store
 Thumbs.db
