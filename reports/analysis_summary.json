@@ -1,0 +1,27 @@
+{
+  "best_configuration": "E6/lightgbm",
+  "validation_balanced_accuracy": 0.7910061822523258,
+  "validation_roc_auc": 0.8466789602468173,
+  "n_validation_errors": 161,
+  "n_validation": 835,
+  "n_scaffolds_with_errors": 18,
+  "shap_available": true,
+  "test_evaluated": true,
+  "environment": {
+    "numpy": "2.5.4",
+    "pandas": "3.0.6",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "rdkit": "2026.9.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.4.1",
+    "mordredcommunity": "2.0.7",
+    "mordred": null,
+    "optuna": "5.0.0",
+    "shap": "0.54.1",
+    "joblib": "1.6.0",
+    "pyyaml": "6.0.3"
+  }
+}

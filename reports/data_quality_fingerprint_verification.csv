@@ -1,0 +1,4 @@
+block,generator,params,n_bits,bit_agreement,row_exact_rate,n_rows_exact,n_rows_checked,exact,mismatch_bit_columns
+ecfp,morgan,"{'radius': 2, 'fpSize': 1024}",1024,0.9999878353695053,0.9994011258833393,8344,8349,False,67
+fcfp,morgan_features,"{'radius': 2, 'fpSize': 1024}",1024,1.0,1.0,8349,8349,True,0
+ptfp,pattern,{'fpSize': 1024},1024,1.0,1.0,8349,8349,True,0

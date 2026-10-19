@@ -1,0 +1,10 @@
+group,n_descriptors
+basic_amine,63
+aromaticity_shape,44
+surface_electronic,37
+misc_rdkit,35
+lipophilicity,24
+physicochemical,20
+polarity_hbond,20
+charge,8
+rdkit_all,251
