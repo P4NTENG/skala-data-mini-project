@@ -1,0 +1,30 @@
+# Environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+*.egg-info/
+.pytest_cache/
+
+# Data (not redistributed)
+train.csv
+predict_input.csv
+predict_output*.csv
+mixed_label_groups.csv
+mixed_label_group_summary.csv
+
+# Other teams' materials / lecture assets
+other/
+데이터분석 및 AIOps_*.pdf
+SKAX_Skala_CI/
+
+# Unrelated notebook
+gigatime_eda.ipynb
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
