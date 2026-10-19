@@ -8,8 +8,9 @@
 아래 위치에 `train.csv`를 두고 노트북을 실행하세요.
 
 ```text
-skala-data-mini-project/
-└── train.csv
+skala-data-mini-project
+└── data/
+    └── train.csv
 ```
 
 ## 컬럼 구성
@@ -29,3 +30,9 @@ skala-data-mini-project/
 - 총 8,349행 × 3,078열
 - 결측치 0건
 - 라벨 분포: 1(비독성) 4,542개(54.4%), 0(독성) 3,807개(45.6%)
+
+## 기존 hERG 관련 논문 자료
+
+https://www.mdpi.com/2079-7737/11/2/209  
+
+https://pubmed.ncbi.nlm.nih.gov/27783199/
