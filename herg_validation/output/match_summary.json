@@ -1,0 +1,22 @@
+{
+  "dataset_rows": 8349,
+  "dataset_rows_matched": 8348,
+  "dataset_rows_no_match": 1,
+  "match_type_counts_rows": {
+    "exact_stereo_match": 11937,
+    "exact_connectivity_match": 259,
+    "normalized_structure_match": 14
+  },
+  "match_type_counts_compounds": {
+    "exact_stereo_match": 8301,
+    "exact_connectivity_match": 46,
+    "normalized_structure_match": 1
+  },
+  "external_records_total": 54021,
+  "matched_record_pairs": 12210,
+  "sources": {
+    "ChEMBL": 12009,
+    "PubChem AID588834": 110,
+    "Tox21 (Biology 2022 S2)": 91
+  }
+}

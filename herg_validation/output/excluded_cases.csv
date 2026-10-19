@@ -1,0 +1,2 @@
+dataset_row_index,reason,detail
+1559,no_structure_match_in_external_data,"InChIKey/연결성/정규화 모두 불일치, ECFP Tanimoto < 0.90"

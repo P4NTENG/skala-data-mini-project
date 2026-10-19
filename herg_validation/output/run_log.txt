@@ -1,0 +1,681 @@
+[2026-10-20 01:35:55] == stage catalog ==
+[2026-10-20 01:37:04] {
+  "n_rows": 8349,
+  "n_columns_total": 3078,
+  "n_unique_smiles": 8349,
+  "label_counts": {
+    "1": 4542,
+    "0": 3807
+  },
+  "n_missing": {
+    "dataset_row_index": 0,
+    "SMILES": 0,
+    "MolWt": 0,
+    "clogp": 0,
+    "sa_score": 0,
+    "qed": 0,
+    "label": 0
+  },
+  "n_parse_fail": 0,
+  "n_with_salt_dot": 262,
+  "n_with_stereo": 3948,
+  "n_canonical_changed_vs_original": 8148,
+  "n_salt_stripped": 262,
+  "n_tautomer_changed": 1489,
+  "n_unique_inchikey": 8322,
+  "n_unique_connectivity_key": 8025,
+  "n_unique_norm_inchikey": 8266
+}
+[2026-10-20 01:37:11] == stage fetch ==
+[2026-10-20 01:37:28]   ChEMBL hERG activity 1000/41078
+[2026-10-20 01:37:41]   ChEMBL hERG activity 2000/41078
+[2026-10-20 01:37:58]   ChEMBL hERG activity 3000/41078
+[2026-10-20 01:38:12]   ChEMBL hERG activity 4000/41078
+[2026-10-20 01:38:30]   ChEMBL hERG activity 5000/41078
+[2026-10-20 01:38:48]   ChEMBL hERG activity 6000/41078
+[2026-10-20 01:39:01]   ChEMBL hERG activity 7000/41078
+[2026-10-20 01:39:15]   ChEMBL hERG activity 8000/41078
+[2026-10-20 01:39:33]   ChEMBL hERG activity 9000/41078
+[2026-10-20 01:39:49]   ChEMBL hERG activity 10000/41078
+[2026-10-20 01:40:04]   ChEMBL hERG activity 11000/41078
+[2026-10-20 01:40:20]   ChEMBL hERG activity 12000/41078
+[2026-10-20 01:40:35]   ChEMBL hERG activity 13000/41078
+[2026-10-20 01:40:51]   ChEMBL hERG activity 14000/41078
+[2026-10-20 01:41:06]   ChEMBL hERG activity 15000/41078
+[2026-10-20 01:41:22]   ChEMBL hERG activity 16000/41078
+[2026-10-20 01:41:38]   ChEMBL hERG activity 17000/41078
+[2026-10-20 01:41:52]   ChEMBL hERG activity 18000/41078
+[2026-10-20 01:42:05]   ChEMBL hERG activity 19000/41078
+[2026-10-20 01:42:22]   ChEMBL hERG activity 20000/41078
+[2026-10-20 01:42:37]   ChEMBL hERG activity 21000/41078
+[2026-10-20 01:42:55]   ChEMBL hERG activity 22000/41078
+[2026-10-20 01:43:10]   ChEMBL hERG activity 23000/41078
+[2026-10-20 01:43:27]   ChEMBL hERG activity 24000/41078
+[2026-10-20 01:43:42]   ChEMBL hERG activity 25000/41078
+[2026-10-20 01:43:59]   ChEMBL hERG activity 26000/41078
+[2026-10-20 01:44:15]   ChEMBL hERG activity 27000/41078
+[2026-10-20 01:44:30]   ChEMBL hERG activity 28000/41078
+[2026-10-20 01:44:46]   ChEMBL hERG activity 29000/41078
+[2026-10-20 01:44:58]   ChEMBL hERG activity 30000/41078
+[2026-10-20 01:45:13]   ChEMBL hERG activity 31000/41078
+[2026-10-20 01:45:32]   ChEMBL hERG activity 32000/41078
+[2026-10-20 01:45:49]   ChEMBL hERG activity 33000/41078
+[2026-10-20 01:46:08]   ChEMBL hERG activity 34000/41078
+[2026-10-20 01:46:24]   ChEMBL hERG activity 35000/41078
+[2026-10-20 01:46:42]   ChEMBL hERG activity 36000/41078
+[2026-10-20 01:46:59]   ChEMBL hERG activity 37000/41078
+[2026-10-20 01:47:16]   ChEMBL hERG activity 38000/41078
+[2026-10-20 01:47:33]   ChEMBL hERG activity 39000/41078
+[2026-10-20 01:47:48]   ChEMBL hERG activity 40000/41078
+[2026-10-20 01:48:01]   ChEMBL hERG activity 41000/41078
+[2026-10-20 01:48:04]   ChEMBL hERG activity 42000/41078
+[2026-10-20 01:48:09]   ChEMBL hERG assay 1000/4829
+[2026-10-20 01:48:12]   ChEMBL hERG assay 2000/4829
+[2026-10-20 01:48:16]   ChEMBL hERG assay 3000/4829
+[2026-10-20 01:48:20]   ChEMBL hERG assay 4000/4829
+[2026-10-20 01:48:24]   ChEMBL hERG assay 5000/4829
+[2026-10-20 01:48:27]   PubChem AID588834 저장 (1909984 bytes)
+[2026-10-20 01:48:27]   AID588834: CID 4743개
+[2026-10-20 01:48:27]   PubChem CID property 조회: 4743건
+[2026-10-20 01:48:28]     cid props 100/4743
+[2026-10-20 01:48:31]     cid props 600/4743
+[2026-10-20 01:48:36]     cid props 1100/4743
+[2026-10-20 01:48:40]     cid props 1600/4743
+[2026-10-20 01:48:45]     cid props 2100/4743
+[2026-10-20 01:48:50]     cid props 2600/4743
+[2026-10-20 01:48:55]     cid props 3100/4743
+[2026-10-20 01:48:58]     cid props 3600/4743
+[2026-10-20 01:49:03]     cid props 4100/4743
+[2026-10-20 01:49:07]     cid props 4600/4743
+[2026-10-20 01:49:10]   ! HTTP 재시도 1/2 https://www.mdpi.com/2079-7737/11/2/209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/2079-7737/11/2/209/s1
+[2026-10-20 01:49:11]   ! HTTP 재시도 2/2 https://www.mdpi.com/2079-7737/11/2/209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/2079-7737/11/2/209/s1
+[2026-10-20 01:49:13]   보충자료 실패: MDPI s1 (Biology 11(2):209) :: HTTP 실패: https://www.mdpi.com/2079-7737/11/2/209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/2079-7737/11/2/209/s1
+[2026-10-20 01:49:13]   ! HTTP 재시도 1/2 https://www.mdpi.com/article/10.3390/biology11020209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/article/10.3390/biology11020209/s1
+[2026-10-20 01:49:14]   ! HTTP 재시도 2/2 https://www.mdpi.com/article/10.3390/biology11020209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/article/10.3390/biology11020209/s1
+[2026-10-20 01:49:16]   보충자료 실패: MDPI article s1 :: HTTP 실패: https://www.mdpi.com/article/10.3390/biology11020209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/article/10.3390/biology11020209/s1
+[2026-10-20 01:51:00]   보충자료 확보: EuropePMC supplementaryFiles -> EuropePMC_supplementaryFiles.zip (34013988 bytes)
+[2026-10-20 01:51:01]   ! HTTP 재시도 1/2 https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 01:51:03]   ! HTTP 재시도 2/2 https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 01:51:05]   보충자료 실패: PMC bin s001 :: HTTP 실패: https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 01:51:06]   ! HTTP 재시도 1/2 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov:443/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 01:51:07]   ! HTTP 재시도 2/2 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov:443/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 01:51:09]   보충자료 실패: PMC instance s001 :: HTTP 실패: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov:443/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 01:51:10]   ! HTTP 재시도 1/2 https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358 :: 404 Client Error: Not Found for url: https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358
+[2026-10-20 01:51:12]   ! HTTP 재시도 2/2 https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358 :: 404 Client Error: Not Found for url: https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358
+[2026-10-20 01:51:14]   보충자료 실패: PMC OA service :: HTTP 실패: https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358 :: 404 Client Error: Not Found for url: https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358
+[2026-10-20 01:51:14] == stage fetch 완료 ==
+[2026-10-20 01:52:48] == stage match ==
+[2026-10-20 01:52:48]   ChEMBL hERG activity 41078건 정리
+[2026-10-20 01:52:49]   보충자료 S2 추출: S2_tox21_hERG.csv (7871행)
+[2026-10-20 01:52:49]   보충자료 S2 레코드 7562건
+[2026-10-20 01:52:49]   외부 레코드 54024건 (ChEMBL/PubChem/보충자료)
+[2026-10-20 01:52:49]   외부 고유 SMILES 38216개 → 구조 키 계산
+[2026-10-20 02:00:59]   외부 fingerprint 53998개 준비
+[2026-10-20 02:00:59]   매칭: 8348행 / 미매칭 1행
+[2026-10-20 02:01:05]   matched_compounds.csv: 12210행 (분자-레코드 쌍)
+[2026-10-20 02:01:05] {
+  "dataset_rows": 8349,
+  "dataset_rows_matched": 8348,
+  "dataset_rows_no_match": 1,
+  "match_type_counts_rows": {
+    "exact_stereo_match": 11937,
+    "exact_connectivity_match": 259,
+    "normalized_structure_match": 14
+  },
+  "match_type_counts_compounds": {
+    "exact_stereo_match": 8301,
+    "exact_connectivity_match": 46,
+    "normalized_structure_match": 1
+  },
+  "external_records_total": 54024,
+  "matched_record_pairs": 12210,
+  "sources": {
+    "ChEMBL": 12009,
+    "PubChem AID588834": 110,
+    "Tox21 (Biology 2022 S2)": 91
+  }
+}
+[2026-10-20 02:02:54] == stage stats ==
+[2026-10-20 02:05:50] == stage stats ==
+[2026-10-20 02:08:49]   metrics.csv: 48행
+[2026-10-20 02:09:15] == stage stats ==
+[2026-10-20 02:12:13]   metrics.csv: 48행
+[2026-10-20 02:12:26] == stage stats ==
+[2026-10-20 02:15:23]   metrics.csv: 48행
+[2026-10-20 02:15:36] == stage stats ==
+[2026-10-20 02:18:33]   metrics.csv: 48행
+[2026-10-20 02:18:33]   label_conflicts.csv: 95행
+[2026-10-20 02:18:33] {
+  "dataset_rows": 8349,
+  "dataset_unique_compounds": 8349,
+  "primary_metrics": [
+    {
+      "scope": "ALL|threshold=10uM",
+      "unit": "compound",
+      "class_rule": "class_10um",
+      "n": 6979,
+      "TP": 3442,
+      "FN": 13,
+      "FP": 138,
+      "TN": 3386,
+      "agreement": 0.9783636624158188,
+      "agreement_lo95": 0.9746777853240564,
+      "agreement_hi95": 0.9815231973818953,
+      "sensitivity": 0.9962373371924746,
+      "specificity": 0.9608399545970489,
+      "precision": 0.9614525139664805,
+      "accuracy": 0.9783636624158188,
+      "balanced_accuracy": 0.9785386458947618,
+      "bal_acc_lo95": 0.9748320241656169,
+      "bal_acc_hi95": 0.981655374889805,
+      "n_label0": 3455,
+      "n_label1": 3524,
+      "agree_label0_rate": 0.9962373371924746,
+      "agree_label1_rate": 0.9608399545970489,
+      "cluster_ba_lo95": 0.9746796935097509,
+      "cluster_ba_hi95": 0.9820957290141187,
+      "n_clusters": 3490.0,
+      "perm_observed_balanced_accuracy": 0.9785386458947618,
+      "perm_observed_accuracy": 0.9783636624158188,
+      "perm_perm_ba_mean": 0.5000745388372639,
+      "perm_perm_ba_sd": 0.005977914106675327,
+      "perm_p_balanced_accuracy": 9.999000099990002e-05,
+      "perm_p_accuracy": 9.999000099990002e-05,
+      "perm_n_perm": 10000.0
+    }
+  ]
+}
+[2026-10-20 02:20:15] == stage match ==
+[2026-10-20 02:20:16]   ChEMBL hERG activity 41078건 정리
+[2026-10-20 02:20:16]   보충자료 S2 레코드 7562건
+[2026-10-20 02:20:16]   외부 레코드 54021건 (ChEMBL/PubChem/보충자료)
+[2026-10-20 02:20:16]   외부 고유 SMILES 38216개 → 구조 키 계산
+[2026-10-20 02:20:16]     구조 키 신규 계산 38216개 (캐시 0개)
+[2026-10-20 02:21:39]       5000/38216
+[2026-10-20 02:22:53]       10000/38216
+[2026-10-20 02:24:16]       15000/38216
+[2026-10-20 02:25:33]       20000/38216
+[2026-10-20 02:27:10]       25000/38216
+[2026-10-20 02:28:02]       30000/38216
+[2026-10-20 02:29:06]       35000/38216
+[2026-10-20 02:29:45]     fingerprint 신규 계산 38216개 (캐시 0개)
+[2026-10-20 02:29:57]   외부 fingerprint 53896개 준비
+[2026-10-20 02:29:57]   매칭: 8348행 / 미매칭 1행
+[2026-10-20 02:30:03]   matched_compounds.csv: 12210행 (분자-레코드 쌍)
+[2026-10-20 02:30:03] {
+  "dataset_rows": 8349,
+  "dataset_rows_matched": 8348,
+  "dataset_rows_no_match": 1,
+  "match_type_counts_rows": {
+    "exact_stereo_match": 11937,
+    "exact_connectivity_match": 259,
+    "normalized_structure_match": 14
+  },
+  "match_type_counts_compounds": {
+    "exact_stereo_match": 8301,
+    "exact_connectivity_match": 46,
+    "normalized_structure_match": 1
+  },
+  "external_records_total": 54021,
+  "matched_record_pairs": 12210,
+  "sources": {
+    "ChEMBL": 12009,
+    "PubChem AID588834": 110,
+    "Tox21 (Biology 2022 S2)": 91
+  }
+}
+[2026-10-20 02:33:18] == stage match ==
+[2026-10-20 02:33:18]   ChEMBL hERG activity 41078건 정리
+[2026-10-20 02:33:19]   보충자료 S2 레코드 7562건
+[2026-10-20 02:33:19]   외부 레코드 54021건 (ChEMBL/PubChem/보충자료)
+[2026-10-20 02:33:19]   외부 고유 SMILES 38216개 → 구조 키 계산
+[2026-10-20 02:33:20]   외부 fingerprint 53896개 준비
+[2026-10-20 02:33:20]   매칭: 8348행 / 미매칭 1행
+[2026-10-20 02:33:27]   matched_compounds.csv: 12210행 (분자-레코드 쌍)
+[2026-10-20 02:33:27] {
+  "dataset_rows": 8349,
+  "dataset_rows_matched": 8348,
+  "dataset_rows_no_match": 1,
+  "match_type_counts_rows": {
+    "exact_stereo_match": 11937,
+    "exact_connectivity_match": 259,
+    "normalized_structure_match": 14
+  },
+  "match_type_counts_compounds": {
+    "exact_stereo_match": 8301,
+    "exact_connectivity_match": 46,
+    "normalized_structure_match": 1
+  },
+  "external_records_total": 54021,
+  "matched_record_pairs": 12210,
+  "sources": {
+    "ChEMBL": 12009,
+    "PubChem AID588834": 110,
+    "Tox21 (Biology 2022 S2)": 91
+  }
+}
+[2026-10-20 02:33:32] == stage stats ==
+[2026-10-20 02:36:53]   metrics.csv: 53행
+[2026-10-20 02:36:53]   label_conflicts.csv: 93행
+[2026-10-20 02:36:53] {
+  "dataset_rows": 8349,
+  "dataset_unique_compounds": 8349,
+  "primary_metrics": [
+    {
+      "scope": "ALL|threshold=10uM",
+      "unit": "compound",
+      "class_rule": "class_10um",
+      "n": 6979,
+      "TP": 3428,
+      "FN": 27,
+      "FP": 98,
+      "TN": 3426,
+      "agreement": 0.9820891245164064,
+      "agreement_lo95": 0.9787018058291393,
+      "agreement_hi95": 0.9849460019630353,
+      "sensitivity": 0.9921852387843705,
+      "specificity": 0.9721906923950057,
+      "precision": 0.9722064662507091,
+      "accuracy": 0.9820891245164064,
+      "balanced_accuracy": 0.9821879655896881,
+      "bal_acc_lo95": 0.9788572050740154,
+      "bal_acc_hi95": 0.985077019067629,
+      "n_label0": 3455,
+      "n_label1": 3524,
+      "agree_label0_rate": 0.9921852387843705,
+      "agree_label1_rate": 0.9721906923950057,
+      "cluster_ba_lo95": 0.9787265043216029,
+      "cluster_ba_hi95": 0.9854702805163056,
+      "n_clusters": 3490.0,
+      "perm_observed_balanced_accuracy": 0.9821879655896881,
+      "perm_observed_accuracy": 0.9820891245164064,
+      "perm_perm_ba_mean": 0.5000779082200039,
+      "perm_perm_ba_sd": 0.005974837990994477,
+      "perm_p_balanced_accuracy": 9.999000099990002e-05,
+      "perm_p_accuracy": 9.999000099990002e-05,
+      "perm_n_perm": 10000.0
+    }
+  ]
+}
+[2026-10-20 02:37:11] == stage endpoints ==
+[2026-10-20 02:37:11]   종말점 스캔 대상 화합물 8289개
+[2026-10-20 02:37:17] == stage props ==
+[2026-10-20 02:37:19]     멀티타깃 0/8289
+[2026-10-20 02:37:35]      property  n_toxic_label0  n_nontoxic_label1  mean_label0  mean_label1  median_label0  median_label1  rank_auc_toxic_higher  mannwhitney_p  n_experimental  rank_auc_blocker_higher  mannwhitney_p_experimental
+        MolWt            3807               4542   443.803081   442.784128     440.996000     441.747500               0.505340   3.999365e-01            6831                 0.515471                2.679250e-02
+        clogp            3807               4542     4.206058     3.450147       4.151720       3.367550               0.662530  8.906780e-145            6831                 0.668099               6.388458e-128
+     sa_score            3807               4542     3.125690     3.239515       3.032265       3.142645               0.458664   7.215434e-11            6831                 0.461899                4.936711e-08
+          qed            3807               4542     0.542177     0.573379       0.538497       0.570699               0.451547   2.205333e-14            6831                 0.439299                3.670598e-18
+         TPSA            3807               4542    70.155521    85.138752      69.060000      85.230000               0.360400  2.504969e-107            6831                 0.357430                1.448845e-92
+n_basic_amine            3807               4542     0.897294     0.751431       1.000000       1.000000               0.569364   3.498032e-36            6831                 0.577745                4.841091e-39
+          HBD            3807               4542     1.143683     1.452664       1.000000       1.000000               0.411738   4.777910e-48            6831                 0.398954                1.046330e-51
+          HBA            3807               4542     4.968742     5.484808       5.000000       5.000000               0.431341   6.842406e-28            6831                 0.433077                3.363461e-22
+[2026-10-20 02:37:42] == stage alt_datasets ==
+[2026-10-20 02:37:43]   Tox21 다운로드 (122925 bytes)
+[2026-10-20 02:38:13]     멀티타깃 500/8289
+[2026-10-20 02:39:11]     멀티타깃 1000/8289
+[2026-10-20 02:39:37]   Tox21: 7831 화합물 중 157개가 대상 데이터와 구조 매칭
+[2026-10-20 02:39:38]   ClinTox 다운로드 (19870 bytes)
+[2026-10-20 02:39:51]     멀티타깃 1500/8289
+[2026-10-20 02:40:35]     멀티타깃 2000/8289
+[2026-10-20 02:40:58]   ClinTox: 1484 화합물 중 123개가 대상 데이터와 구조 매칭
+[2026-10-20 02:40:58] dataset      endpoint  n_compounds  n_active                            direction  balanced_accuracy  accuracy  sensitivity  specificity   perm_p  bh_q_value
+  Tox21        SR-MMP           83        11     alt_active=dataset_label0(toxic)           0.533631  0.590361     0.171429     0.895833 0.285714    0.565268
+  Tox21         NR-ER          111         8     alt_active=dataset_label0(toxic)           0.531617  0.504505     0.101695     0.961538 0.196803    0.565268
+ClinTox        CT_TOX          123        13     alt_active=dataset_label0(toxic)           0.523533  0.520325     0.129032     0.918033 0.298701    0.565268
+  Tox21  NR-Aromatase          116         7     alt_active=dataset_label0(toxic)           0.520815  0.482759     0.079365     0.962264 0.308691    0.565268
+  Tox21        NR-AhR          122         9     alt_active=dataset_label0(toxic)           0.519838  0.491803     0.092308     0.947368 0.314685    0.565268
+  Tox21        SR-ARE           86        14     alt_active=dataset_label0(toxic)           0.515276  0.546512     0.179487     0.851064 0.480519    0.565268
+  Tox21        SR-p53          123         6     alt_active=dataset_label0(toxic)           0.513528  0.487805     0.061538     0.965517 0.381618    0.565268
+  Tox21        SR-HSE          122         8     alt_active=dataset_label0(toxic)           0.513200  0.491803     0.078125     0.948276 0.420579    0.565268
+  Tox21     NR-ER-LBD          142         2     alt_active=dataset_label0(toxic)           0.512500  0.450704     0.025000     1.000000 0.327672    0.565268
+  Tox21     NR-AR-LBD          136         5 alt_active=dataset_label1(non_toxic)           0.511842  0.566176     0.973684     0.050000 0.383616    0.565268
+  Tox21 NR-PPAR-gamma          109         1 alt_active=dataset_label1(non_toxic)           0.509259  0.513761     1.000000     0.018519 0.484515    0.565268
+  Tox21         NR-AR          149         8 alt_active=dataset_label1(non_toxic)           0.508490  0.577181     0.953488     0.063492 0.470529    0.565268
+[2026-10-20 02:41:17]     멀티타깃 2500/8289
+[2026-10-20 02:41:48]     멀티타깃 3000/8289
+[2026-10-20 02:42:05] == stage stats ==
+[2026-10-20 02:42:20]     멀티타깃 3500/8289
+[2026-10-20 02:42:59]     멀티타깃 4000/8289
+[2026-10-20 02:44:02]     멀티타깃 4500/8289
+[2026-10-20 02:44:41]     멀티타깃 5000/8289
+[2026-10-20 02:45:12]     멀티타깃 5500/8289
+[2026-10-20 02:45:25]   metrics.csv: 53행
+[2026-10-20 02:45:25]   label_conflicts.csv: 93행
+[2026-10-20 02:45:25] {
+  "dataset_rows": 8349,
+  "dataset_unique_compounds": 8349,
+  "primary_metrics": [
+    {
+      "scope": "ALL|threshold=10uM",
+      "unit": "compound",
+      "class_rule": "class_10um",
+      "n": 6979,
+      "TP": 3428,
+      "FN": 27,
+      "FP": 98,
+      "TN": 3426,
+      "agreement": 0.9820891245164064,
+      "agreement_lo95": 0.9787018058291393,
+      "agreement_hi95": 0.9849460019630353,
+      "sensitivity": 0.9921852387843705,
+      "specificity": 0.9721906923950057,
+      "precision": 0.9722064662507091,
+      "accuracy": 0.9820891245164064,
+      "balanced_accuracy": 0.9821879655896881,
+      "bal_acc_lo95": 0.9788572050740154,
+      "bal_acc_hi95": 0.985077019067629,
+      "n_label0": 3455,
+      "n_label1": 3524,
+      "agree_label0_rate": 0.9921852387843705,
+      "agree_label1_rate": 0.9721906923950057,
+      "cluster_ba_lo95": 0.9787265043216029,
+      "cluster_ba_hi95": 0.9854702805163056,
+      "n_clusters": 3490.0,
+      "perm_observed_balanced_accuracy": 0.9821879655896881,
+      "perm_observed_accuracy": 0.9820891245164064,
+      "perm_perm_ba_mean": 0.5000779082200039,
+      "perm_perm_ba_sd": 0.005974837990994477,
+      "perm_p_balanced_accuracy": 9.999000099990002e-05,
+      "perm_p_accuracy": 9.999000099990002e-05,
+      "perm_n_perm": 10000.0
+    }
+  ]
+}
+[2026-10-20 02:45:49]     멀티타깃 6000/8289
+[2026-10-20 02:46:21]     멀티타깃 6500/8289
+[2026-10-20 02:47:00]     멀티타깃 7000/8289
+[2026-10-20 02:48:02]     멀티타깃 7500/8289
+[2026-10-20 02:49:04]     멀티타깃 8000/8289
+[2026-10-20 02:51:35]   멀티타깃 activity 66197건
+[2026-10-20 02:52:16]   endpoint_scan.csv: 157 targets
+[2026-10-20 02:52:16] target_chembl_id  n_compounds  n_active_at_10uM             direction  balanced_accuracy  accuracy  sensitivity  specificity  agreement  perm_p_balanced_accuracy  bh_q_value                                          target_pref_name target_organism    target_type  is_herg
+       CHEMBL240         5107              3542 active_matches_label0           0.947989  0.964363     0.999703     0.896275   0.964363                  0.000999    0.078422 Voltage-gated inwardly rectifying potassium channel KCNH2    Homo sapiens SINGLE PROTEIN     True
+      CHEMBL2842           67                47 active_matches_label1           0.727486  0.761194     0.576923     0.878049   0.761194                  0.000999    0.078422                      Serine/threonine-protein kinase mTOR    Homo sapiens SINGLE PROTEIN    False
+       CHEMBL400           34                28 active_matches_label1           0.705534  0.794118     0.454545     0.956522   0.794118                  0.005994    0.188212                                                MDA-MB-231    Homo sapiens      CELL-LINE    False
+      CHEMBL6020           49                10 active_matches_label1           0.696429  0.734694     0.964286     0.428571   0.734694                  0.002997    0.117632                                     Bile salt export pump    Homo sapiens SINGLE PROTEIN    False
+    CHEMBL614245           35                31 active_matches_label1           0.668981  0.828571     0.375000     0.962963   0.828571                  0.031968    0.431319                                                     THP-1    Homo sapiens      CELL-LINE    False
+      CHEMBL4302           34                25 active_matches_label0           0.666667  0.735294     0.833333     0.500000   0.735294                  0.076923    0.635628                           ATP-dependent translocase ABCB1    Homo sapiens SINGLE PROTEIN    False
+      CHEMBL1824           32                28 active_matches_label1           0.666667  0.750000     0.333333     1.000000   0.750000                  0.014985    0.294081                   Receptor tyrosine-protein kinase erbB-2    Homo sapiens SINGLE PROTEIN    False
+       CHEMBL387           47                34 active_matches_label1           0.665414  0.702128     0.473684     0.857143   0.702128                  0.011988    0.291280                                                      MCF7    Homo sapiens      CELL-LINE    False
+       CHEMBL256           55                31 active_matches_label1           0.658488  0.654545     0.586207     0.730769   0.654545                  0.029970    0.431319                                     Adenosine receptor A3    Homo sapiens SINGLE PROTEIN    False
+       CHEMBL395           36                25 active_matches_label1           0.656347  0.666667     0.470588     0.842105   0.666667                  0.062937    0.609946                                                     HepG2    Homo sapiens      CELL-LINE    False
+      CHEMBL4777           43                28 active_matches_label1           0.642534  0.604651     0.461538     0.823529   0.604651                  0.108891    0.763758                            Neuropeptide Y receptor type 1    Homo sapiens SINGLE PROTEIN    False
+      CHEMBL4616           77                57 active_matches_label1           0.614444  0.532468     0.340000     0.888889   0.532468                  0.031968    0.431319               Growth hormone secretagogue receptor type 1    Homo sapiens SINGLE PROTEIN    False
+      CHEMBL3577           30                 7 active_matches_label0           0.602871  0.666667     0.363636     0.842105   0.666667                  0.338661    1.000000                                Aldehyde dehydrogenase 1A1    Homo sapiens SINGLE PROTEIN    False
+       CHEMBL246           55                46 active_matches_label1           0.600133  0.618182     0.269231     0.931034   0.618182                  0.066933    0.609946                                Beta-3 adrenergic receptor    Homo sapiens SINGLE PROTEIN    False
+      CHEMBL2185           32                29 active_matches_label0           0.600000  0.625000     1.000000     0.200000   0.625000                  0.101898    0.763758                                           Aurora kinase B    Homo sapiens SINGLE PROTEIN    False
+[2026-10-20 02:53:55] == stage figures ==
+[2026-10-20 02:54:07]   figures 생성 완료
+[2026-10-20 02:54:31] == stage stats ==
+[2026-10-20 02:57:52]   metrics.csv: 54행
+[2026-10-20 02:57:52]   label_conflicts.csv: 93행
+[2026-10-20 02:57:52] {
+  "dataset_rows": 8349,
+  "dataset_unique_compounds": 8349,
+  "primary_metrics": [
+    {
+      "scope": "ALL|threshold=10uM",
+      "unit": "compound",
+      "class_rule": "class_10um",
+      "n": 6979,
+      "TP": 3428,
+      "FN": 27,
+      "FP": 98,
+      "TN": 3426,
+      "agreement": 0.9820891245164064,
+      "agreement_lo95": 0.9787018058291393,
+      "agreement_hi95": 0.9849460019630353,
+      "sensitivity": 0.9921852387843705,
+      "specificity": 0.9721906923950057,
+      "precision": 0.9722064662507091,
+      "accuracy": 0.9820891245164064,
+      "balanced_accuracy": 0.9821879655896881,
+      "bal_acc_lo95": 0.9788572050740154,
+      "bal_acc_hi95": 0.985077019067629,
+      "n_label0": 3455,
+      "n_label1": 3524,
+      "agree_label0_rate": 0.9921852387843705,
+      "agree_label1_rate": 0.9721906923950057,
+      "cluster_ba_lo95": 0.9787265043216029,
+      "cluster_ba_hi95": 0.9854702805163056,
+      "n_clusters": 3490.0,
+      "perm_observed_balanced_accuracy": 0.9821879655896881,
+      "perm_observed_accuracy": 0.9820891245164064,
+      "perm_perm_ba_mean": 0.5000779082200039,
+      "perm_perm_ba_sd": 0.005974837990994477,
+      "perm_p_balanced_accuracy": 9.999000099990002e-05,
+      "perm_p_accuracy": 9.999000099990002e-05,
+      "perm_n_perm": 10000.0
+    }
+  ]
+}
+[2026-10-20 03:00:02] == stage catalog ==
+[2026-10-20 03:01:34] {
+  "n_rows": 8349,
+  "n_columns_total": 3078,
+  "n_unique_smiles": 8349,
+  "label_counts": {
+    "1": 4542,
+    "0": 3807
+  },
+  "n_missing": {
+    "dataset_row_index": 0,
+    "SMILES": 0,
+    "MolWt": 0,
+    "clogp": 0,
+    "sa_score": 0,
+    "qed": 0,
+    "label": 0
+  },
+  "n_parse_fail": 0,
+  "n_with_salt_dot": 262,
+  "n_with_stereo": 3948,
+  "n_canonical_changed_vs_original": 8148,
+  "n_salt_stripped": 262,
+  "n_tautomer_changed": 1489,
+  "n_unique_inchikey": 8322,
+  "n_unique_connectivity_key": 8025,
+  "n_unique_norm_inchikey": 8266
+}
+[2026-10-20 03:01:34] == stage fetch ==
+[2026-10-20 03:01:34]   캐시 사용: chembl_activity_CHEMBL240.jsonl (41078 rows)
+[2026-10-20 03:01:34]   캐시 사용: chembl_assays_CHEMBL240.jsonl (4829 rows)
+[2026-10-20 03:01:34]   캐시 사용: pubchem_aid588834.csv
+[2026-10-20 03:01:35]   AID588834: CID 4743개
+[2026-10-20 03:01:35]   PubChem CID property 조회: 4743건
+[2026-10-20 03:01:36]     cid props 100/4743
+[2026-10-20 03:01:40]     cid props 600/4743
+[2026-10-20 03:01:45]     cid props 1100/4743
+[2026-10-20 03:01:50]     cid props 1600/4743
+[2026-10-20 03:01:56]     cid props 2100/4743
+[2026-10-20 03:02:01]     cid props 2600/4743
+[2026-10-20 03:02:06]     cid props 3100/4743
+[2026-10-20 03:02:11]     cid props 3600/4743
+[2026-10-20 03:02:15]     cid props 4100/4743
+[2026-10-20 03:02:19]     cid props 4600/4743
+[2026-10-20 03:02:21]   ! HTTP 재시도 1/2 https://www.mdpi.com/2079-7737/11/2/209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/2079-7737/11/2/209/s1
+[2026-10-20 03:02:22]   ! HTTP 재시도 2/2 https://www.mdpi.com/2079-7737/11/2/209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/2079-7737/11/2/209/s1
+[2026-10-20 03:02:24]   보충자료 실패: MDPI s1 (Biology 11(2):209) :: HTTP 실패: https://www.mdpi.com/2079-7737/11/2/209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/2079-7737/11/2/209/s1
+[2026-10-20 03:02:25]   ! HTTP 재시도 1/2 https://www.mdpi.com/article/10.3390/biology11020209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/article/10.3390/biology11020209/s1
+[2026-10-20 03:02:26]   ! HTTP 재시도 2/2 https://www.mdpi.com/article/10.3390/biology11020209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/article/10.3390/biology11020209/s1
+[2026-10-20 03:02:28]   보충자료 실패: MDPI article s1 :: HTTP 실패: https://www.mdpi.com/article/10.3390/biology11020209/s1 :: 403 Client Error: Forbidden for url: https://www.mdpi.com/article/10.3390/biology11020209/s1
+[2026-10-20 03:02:40]   보충자료 확보: EuropePMC supplementaryFiles -> EuropePMC_supplementaryFiles.zip (34013988 bytes)
+[2026-10-20 03:02:41]   ! HTTP 재시도 1/2 https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 03:02:43]   ! HTTP 재시도 2/2 https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 03:02:45]   보충자료 실패: PMC bin s001 :: HTTP 실패: https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 03:02:46]   ! HTTP 재시도 1/2 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov:443/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 03:02:47]   ! HTTP 재시도 2/2 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov:443/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 03:02:49]   보충자료 실패: PMC instance s001 :: HTTP 실패: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8869358/bin/biology-11-00209-s001.zip :: 403 Client Error: Forbidden for url: https://pmc.ncbi.nlm.nih.gov:443/articles/PMC8869358/bin/biology-11-00209-s001.zip
+[2026-10-20 03:02:50]   ! HTTP 재시도 1/2 https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358 :: 404 Client Error: Not Found for url: https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358
+[2026-10-20 03:02:52]   ! HTTP 재시도 2/2 https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358 :: 404 Client Error: Not Found for url: https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358
+[2026-10-20 03:02:54]   보충자료 실패: PMC OA service :: HTTP 실패: https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358 :: 404 Client Error: Not Found for url: https://www.ncbi.nlm.nih.gov/pmc/utils/oa/oa.fcgi?id=PMC8869358
+[2026-10-20 03:02:54] == stage fetch 완료 ==
+[2026-10-20 03:02:54] == stage match ==
+[2026-10-20 03:02:55]   ChEMBL hERG activity 41078건 정리
+[2026-10-20 03:02:56]   보충자료 S2 레코드 7562건
+[2026-10-20 03:02:56]   외부 레코드 54021건 (ChEMBL/PubChem/보충자료)
+[2026-10-20 03:02:56]   외부 고유 SMILES 38216개 → 구조 키 계산
+[2026-10-20 03:02:58]   외부 fingerprint 53896개 준비
+[2026-10-20 03:02:58]   매칭: 8348행 / 미매칭 1행
+[2026-10-20 03:03:04]   matched_compounds.csv: 12210행 (분자-레코드 쌍)
+[2026-10-20 03:03:04] {
+  "dataset_rows": 8349,
+  "dataset_rows_matched": 8348,
+  "dataset_rows_no_match": 1,
+  "match_type_counts_rows": {
+    "exact_stereo_match": 11937,
+    "exact_connectivity_match": 259,
+    "normalized_structure_match": 14
+  },
+  "match_type_counts_compounds": {
+    "exact_stereo_match": 8301,
+    "exact_connectivity_match": 46,
+    "normalized_structure_match": 1
+  },
+  "external_records_total": 54021,
+  "matched_record_pairs": 12210,
+  "sources": {
+    "ChEMBL": 12009,
+    "PubChem AID588834": 110,
+    "Tox21 (Biology 2022 S2)": 91
+  }
+}
+[2026-10-20 03:03:05] == stage stats ==
+[2026-10-20 03:06:28]   metrics.csv: 54행
+[2026-10-20 03:06:28]   label_conflicts.csv: 93행
+[2026-10-20 03:06:28] {
+  "dataset_rows": 8349,
+  "dataset_unique_compounds": 8349,
+  "primary_metrics": [
+    {
+      "scope": "ALL|threshold=10uM",
+      "unit": "compound",
+      "class_rule": "class_10um",
+      "n": 6979,
+      "TP": 3428,
+      "FN": 27,
+      "FP": 98,
+      "TN": 3426,
+      "agreement": 0.9820891245164064,
+      "agreement_lo95": 0.9787018058291393,
+      "agreement_hi95": 0.9849460019630353,
+      "sensitivity": 0.9921852387843705,
+      "specificity": 0.9721906923950057,
+      "precision": 0.9722064662507091,
+      "accuracy": 0.9820891245164064,
+      "balanced_accuracy": 0.9821879655896881,
+      "bal_acc_lo95": 0.9788572050740154,
+      "bal_acc_hi95": 0.985077019067629,
+      "n_label0": 3455,
+      "n_label1": 3524,
+      "agree_label0_rate": 0.9921852387843705,
+      "agree_label1_rate": 0.9721906923950057,
+      "cluster_ba_lo95": 0.9787265043216029,
+      "cluster_ba_hi95": 0.9854702805163056,
+      "n_clusters": 3490.0,
+      "perm_observed_balanced_accuracy": 0.9821879655896881,
+      "perm_observed_accuracy": 0.9820891245164064,
+      "perm_perm_ba_mean": 0.5000779082200039,
+      "perm_perm_ba_sd": 0.005974837990994477,
+      "perm_p_balanced_accuracy": 9.999000099990002e-05,
+      "perm_p_accuracy": 9.999000099990002e-05,
+      "perm_n_perm": 10000.0
+    }
+  ]
+}
+[2026-10-20 03:06:28] == stage endpoints ==
+[2026-10-20 03:06:29]   종말점 스캔 대상 화합물 8289개
+[2026-10-20 03:06:29]   멀티타깃 activity 66197건
+[2026-10-20 03:07:03]   endpoint_scan.csv: 157 targets
+[2026-10-20 03:07:03] target_chembl_id  n_compounds  n_active_at_10uM             direction  balanced_accuracy  accuracy  sensitivity  specificity  agreement  perm_p_balanced_accuracy  bh_q_value                                          target_pref_name target_organism    target_type  is_herg
+       CHEMBL240         5107              3542 active_matches_label0           0.947989  0.964363     0.999703     0.896275   0.964363                  0.000999    0.078422 Voltage-gated inwardly rectifying potassium channel KCNH2    Homo sapiens SINGLE PROTEIN     True
+      CHEMBL2842           67                47 active_matches_label1           0.727486  0.761194     0.576923     0.878049   0.761194                  0.000999    0.078422                      Serine/threonine-protein kinase mTOR    Homo sapiens SINGLE PROTEIN    False
+       CHEMBL400           34                28 active_matches_label1           0.705534  0.794118     0.454545     0.956522   0.794118                  0.005994    0.188212                                                MDA-MB-231    Homo sapiens      CELL-LINE    False
+      CHEMBL6020           49                10 active_matches_label1           0.696429  0.734694     0.964286     0.428571   0.734694                  0.002997    0.117632                                     Bile salt export pump    Homo sapiens SINGLE PROTEIN    False
+    CHEMBL614245           35                31 active_matches_label1           0.668981  0.828571     0.375000     0.962963   0.828571                  0.031968    0.431319                                                     THP-1    Homo sapiens      CELL-LINE    False
+      CHEMBL4302           34                25 active_matches_label0           0.666667  0.735294     0.833333     0.500000   0.735294                  0.076923    0.635628                           ATP-dependent translocase ABCB1    Homo sapiens SINGLE PROTEIN    False
+      CHEMBL1824           32                28 active_matches_label1           0.666667  0.750000     0.333333     1.000000   0.750000                  0.014985    0.294081                   Receptor tyrosine-protein kinase erbB-2    Homo sapiens SINGLE PROTEIN    False
+       CHEMBL387           47                34 active_matches_label1           0.665414  0.702128     0.473684     0.857143   0.702128                  0.011988    0.291280                                                      MCF7    Homo sapiens      CELL-LINE    False
+       CHEMBL256           55                31 active_matches_label1           0.658488  0.654545     0.586207     0.730769   0.654545                  0.029970    0.431319                                     Adenosine receptor A3    Homo sapiens SINGLE PROTEIN    False
+       CHEMBL395           36                25 active_matches_label1           0.656347  0.666667     0.470588     0.842105   0.666667                  0.062937    0.609946                                                     HepG2    Homo sapiens      CELL-LINE    False
+      CHEMBL4777           43                28 active_matches_label1           0.642534  0.604651     0.461538     0.823529   0.604651                  0.108891    0.763758                            Neuropeptide Y receptor type 1    Homo sapiens SINGLE PROTEIN    False
+      CHEMBL4616           77                57 active_matches_label1           0.614444  0.532468     0.340000     0.888889   0.532468                  0.031968    0.431319               Growth hormone secretagogue receptor type 1    Homo sapiens SINGLE PROTEIN    False
+      CHEMBL3577           30                 7 active_matches_label0           0.602871  0.666667     0.363636     0.842105   0.666667                  0.338661    1.000000                                Aldehyde dehydrogenase 1A1    Homo sapiens SINGLE PROTEIN    False
+       CHEMBL246           55                46 active_matches_label1           0.600133  0.618182     0.269231     0.931034   0.618182                  0.066933    0.609946                                Beta-3 adrenergic receptor    Homo sapiens SINGLE PROTEIN    False
+      CHEMBL2185           32                29 active_matches_label0           0.600000  0.625000     1.000000     0.200000   0.625000                  0.101898    0.763758                                           Aurora kinase B    Homo sapiens SINGLE PROTEIN    False
+[2026-10-20 03:07:03] == stage alt_datasets ==
+[2026-10-20 03:08:58]   Tox21: 7831 화합물 중 157개가 대상 데이터와 구조 매칭
+[2026-10-20 03:10:19]   ClinTox: 1484 화합물 중 123개가 대상 데이터와 구조 매칭
+[2026-10-20 03:10:19] dataset      endpoint  n_compounds  n_active                            direction  balanced_accuracy  accuracy  sensitivity  specificity   perm_p  bh_q_value
+  Tox21        SR-MMP           83        11     alt_active=dataset_label0(toxic)           0.533631  0.590361     0.171429     0.895833 0.285714    0.565268
+  Tox21         NR-ER          111         8     alt_active=dataset_label0(toxic)           0.531617  0.504505     0.101695     0.961538 0.196803    0.565268
+ClinTox        CT_TOX          123        13     alt_active=dataset_label0(toxic)           0.523533  0.520325     0.129032     0.918033 0.298701    0.565268
+  Tox21  NR-Aromatase          116         7     alt_active=dataset_label0(toxic)           0.520815  0.482759     0.079365     0.962264 0.308691    0.565268
+  Tox21        NR-AhR          122         9     alt_active=dataset_label0(toxic)           0.519838  0.491803     0.092308     0.947368 0.314685    0.565268
+  Tox21        SR-ARE           86        14     alt_active=dataset_label0(toxic)           0.515276  0.546512     0.179487     0.851064 0.480519    0.565268
+  Tox21        SR-p53          123         6     alt_active=dataset_label0(toxic)           0.513528  0.487805     0.061538     0.965517 0.381618    0.565268
+  Tox21        SR-HSE          122         8     alt_active=dataset_label0(toxic)           0.513200  0.491803     0.078125     0.948276 0.420579    0.565268
+  Tox21     NR-ER-LBD          142         2     alt_active=dataset_label0(toxic)           0.512500  0.450704     0.025000     1.000000 0.327672    0.565268
+  Tox21     NR-AR-LBD          136         5 alt_active=dataset_label1(non_toxic)           0.511842  0.566176     0.973684     0.050000 0.383616    0.565268
+  Tox21 NR-PPAR-gamma          109         1 alt_active=dataset_label1(non_toxic)           0.509259  0.513761     1.000000     0.018519 0.484515    0.565268
+  Tox21         NR-AR          149         8 alt_active=dataset_label1(non_toxic)           0.508490  0.577181     0.953488     0.063492 0.470529    0.565268
+[2026-10-20 03:10:19] == stage props ==
+[2026-10-20 03:10:26]      property  n_toxic_label0  n_nontoxic_label1  mean_label0  mean_label1  median_label0  median_label1  rank_auc_toxic_higher  mannwhitney_p  n_experimental  rank_auc_blocker_higher  mannwhitney_p_experimental
+        MolWt            3807               4542   443.803081   442.784128     440.996000     441.747500               0.505340   3.999365e-01            6831                 0.515471                2.679250e-02
+        clogp            3807               4542     4.206058     3.450147       4.151720       3.367550               0.662530  8.906780e-145            6831                 0.668099               6.388458e-128
+     sa_score            3807               4542     3.125690     3.239515       3.032265       3.142645               0.458664   7.215434e-11            6831                 0.461899                4.936711e-08
+          qed            3807               4542     0.542177     0.573379       0.538497       0.570699               0.451547   2.205333e-14            6831                 0.439299                3.670598e-18
+         TPSA            3807               4542    70.155521    85.138752      69.060000      85.230000               0.360400  2.504969e-107            6831                 0.357430                1.448845e-92
+n_basic_amine            3807               4542     0.897294     0.751431       1.000000       1.000000               0.569364   3.498032e-36            6831                 0.577745                4.841091e-39
+          HBD            3807               4542     1.143683     1.452664       1.000000       1.000000               0.411738   4.777910e-48            6831                 0.398954                1.046330e-51
+          HBA            3807               4542     4.968742     5.484808       5.000000       5.000000               0.431341   6.842406e-28            6831                 0.433077                3.363461e-22
+[2026-10-20 03:10:26] == stage figures ==
+[2026-10-20 03:10:28]   figures 생성 완료
+[2026-10-20 03:12:30] == stage stats ==
+[2026-10-20 03:15:52]   metrics.csv: 54행
+[2026-10-20 03:15:52]   label_conflicts.csv: 93행
+[2026-10-20 03:15:52] {
+  "dataset_rows": 8349,
+  "dataset_unique_compounds": 8349,
+  "primary_metrics": [
+    {
+      "scope": "ALL|threshold=10uM",
+      "unit": "compound",
+      "class_rule": "class_10um",
+      "n": 6979,
+      "TP": 3428,
+      "FN": 27,
+      "FP": 98,
+      "TN": 3426,
+      "agreement": 0.9820891245164064,
+      "agreement_lo95": 0.9787018058291393,
+      "agreement_hi95": 0.9849460019630353,
+      "disagreement": 0.017910875483593602,
+      "n_clear_compounds": 6979,
+      "sensitivity": 0.9921852387843705,
+      "specificity": 0.9721906923950057,
+      "precision": 0.9722064662507091,
+      "accuracy": 0.9820891245164064,
+      "balanced_accuracy": 0.9821879655896881,
+      "bal_acc_lo95": 0.9788572050740154,
+      "bal_acc_hi95": 0.985077019067629,
+      "n_label0": 3455,
+      "n_label1": 3524,
+      "agree_label0_rate": 0.9921852387843705,
+      "agree_label1_rate": 0.9721906923950057,
+      "cluster_ba_lo95": 0.9787265043216029,
+      "cluster_ba_hi95": 0.9854702805163056,
+      "n_clusters": 3490.0,
+      "perm_observed_balanced_accuracy": 0.9821879655896881,
+      "perm_observed_accuracy": 0.9820891245164064,
+      "perm_perm_ba_mean": 0.5000779082200039,
+      "perm_perm_ba_sd": 0.005974837990994477,
+      "perm_p_balanced_accuracy": 9.999000099990002e-05,
+      "perm_p_accuracy": 9.999000099990002e-05,
+      "perm_n_perm": 10000.0
+    }
+  ]
+}
+[2026-10-20 03:15:53] == stage figures ==
+[2026-10-20 03:15:56]   figures 생성 완료

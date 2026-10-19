@@ -19,6 +19,16 @@ other/
 데이터분석 및 AIOps_*.pdf
 SKAX_Skala_CI/
 
+# hERG validation: raw downloads cache (large, re-downloadable)
+herg_validation/cache/
+# hERG validation: outputs that embed original SMILES (same redistribution restriction)
+herg_validation/output/matched_compounds.csv
+herg_validation/output/compound_level.csv
+herg_validation/output/compound_level_by_source.csv
+herg_validation/output/label_conflicts.csv
+herg_validation/output/dataset_keys.csv
+herg_validation/output/dataset_with_properties.csv
+
 # Unrelated notebook
 gigatime_eda.ipynb
 

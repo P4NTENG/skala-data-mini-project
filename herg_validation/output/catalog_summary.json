@@ -1,0 +1,27 @@
+{
+  "n_rows": 8349,
+  "n_columns_total": 3078,
+  "n_unique_smiles": 8349,
+  "label_counts": {
+    "1": 4542,
+    "0": 3807
+  },
+  "n_missing": {
+    "dataset_row_index": 0,
+    "SMILES": 0,
+    "MolWt": 0,
+    "clogp": 0,
+    "sa_score": 0,
+    "qed": 0,
+    "label": 0
+  },
+  "n_parse_fail": 0,
+  "n_with_salt_dot": 262,
+  "n_with_stereo": 3948,
+  "n_canonical_changed_vs_original": 8148,
+  "n_salt_stripped": 262,
+  "n_tautomer_changed": 1489,
+  "n_unique_inchikey": 8322,
+  "n_unique_connectivity_key": 8025,
+  "n_unique_norm_inchikey": 8266
+}

@@ -1,0 +1,42 @@
+{
+  "dataset_rows": 8349,
+  "dataset_unique_compounds": 8349,
+  "primary_metrics": [
+    {
+      "scope": "ALL|threshold=10uM",
+      "unit": "compound",
+      "class_rule": "class_10um",
+      "n": 6979,
+      "TP": 3428,
+      "FN": 27,
+      "FP": 98,
+      "TN": 3426,
+      "agreement": 0.9820891245164064,
+      "agreement_lo95": 0.9787018058291393,
+      "agreement_hi95": 0.9849460019630353,
+      "disagreement": 0.017910875483593602,
+      "n_clear_compounds": 6979,
+      "sensitivity": 0.9921852387843705,
+      "specificity": 0.9721906923950057,
+      "precision": 0.9722064662507091,
+      "accuracy": 0.9820891245164064,
+      "balanced_accuracy": 0.9821879655896881,
+      "bal_acc_lo95": 0.9788572050740154,
+      "bal_acc_hi95": 0.985077019067629,
+      "n_label0": 3455,
+      "n_label1": 3524,
+      "agree_label0_rate": 0.9921852387843705,
+      "agree_label1_rate": 0.9721906923950057,
+      "cluster_ba_lo95": 0.9787265043216029,
+      "cluster_ba_hi95": 0.9854702805163056,
+      "n_clusters": 3490.0,
+      "perm_observed_balanced_accuracy": 0.9821879655896881,
+      "perm_observed_accuracy": 0.9820891245164064,
+      "perm_perm_ba_mean": 0.5000779082200039,
+      "perm_perm_ba_sd": 0.005974837990994477,
+      "perm_p_balanced_accuracy": 9.999000099990002e-05,
+      "perm_p_accuracy": 9.999000099990002e-05,
+      "perm_n_perm": 10000.0
+    }
+  ]
+}
