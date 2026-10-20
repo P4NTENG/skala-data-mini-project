@@ -1,9 +1,7 @@
-# SKALA 데이터분석 미니 프로젝트 — 10반 3조
+# SKALA 데이터분석 미니 프로젝트 — hERG blocker 예측
 
-신약 후보물질의 **독성(toxicity)** 을 예측하기 위한 EDA 및 피처 설계 프로젝트입니다.  
-SMILES, ECFP/FCFP/PTFP fingerprint, 물성 descriptor를 사용해 “어떤 구조적 신호가 독성과 연결되는가”를 분석하고, 이를 바탕으로 파생변수 후보를 규정합니다.
-
-> **현재 단계의 초점:** 모델 성능 자체보다 **EDA → 도메인 해석 → 파생변수 규정**입니다.
+> 10반 3조 · 2026-10-20 기준
+> EDA에서 출발해 **hERG 차단 활성 예측 챌린지**의 제출 모델과 검증 파이프라인까지 확장한 저장소입니다.
 
 ---
 
@@ -11,143 +9,328 @@ SMILES, ECFP/FCFP/PTFP fingerprint, 물성 descriptor를 사용해 “어떤 구
 
 | 항목 | 내용 |
 |---|---|
-| 문제 | 화합물의 독성 여부 이진 분류 |
-| 데이터 | 8,349개 분자 × 3,078개 컬럼 |
-| 입력 | SMILES 1개 + ECFP/FCFP/PTFP 각 1,024-bit + 물성 4개 |
-| 라벨 | `1 = 독성 없음(non-toxic, Positive)`, `0 = 독성 있음(toxic, Negative)` |
-| 평가지표 | F1 (Positive = 1 기준), 보조로 toxic recall / specificity |
+| 문제 | hERG 차단 활성 이진 분류 |
+| 학습 데이터 | 8,349개 분자 × 3,078 컬럼 (`data/train.csv`) |
+| 예측 데이터 | 927개 분자 × 3,077 컬럼 (`data/predict_input.csv`) |
+| 입력 | SMILES + ECFP/FCFP/PTFP 1,024-bit + 물성 4개 (`MolWt`, `clogp`, `sa_score`, `qed`) |
+| 라벨 | `0 = hERG blocker`, `1 = non-toxic` |
+| **채점 지표** | **F1 (positive = `label 1`, non-toxic)** |
+| 제출 형식 | `SMILES,label` 두 컬럼, 정수 0/1 |
+
+> **라벨 극성 주의:** 이 저장소의 EDA/초기 ML 보고서 일부는 `label 0`(blocker)을 positive로 사용합니다.
+> 챌린지 채점은 **`label 1` 기준 F1**이므로, 두 기준을 직접 비교하면 안 됩니다.
 
 ---
 
-## 2. 핵심 EDA 결과
+## 2. 현재 결과 요약
 
-- **라벨 방향:** `1 = 독성 없음`이다. 반대로 해석하면 clogP·SA score의 방향이 모두 뒤집힌다.
-- **제공 물성 4개의 한계:** MolWt는 거의 무관(AUC 0.495), SA score/QED는 약함. clogP가 가장 강한 단일 신호다.
-- **clogP × TPSA:** 높은 clogP + 낮은 TPSA 구간의 독성률 **76.4%** (전체 45.6%).
-- **염기성 아민/CAD:** CAD 해당 62.4% vs 미해당 30.6%. hERG/CAD 도메인 가설과 연결된다.
-- **fingerprint:** 활성 bit 수 자체는 label과 거의 무관(상관 ≈ 0.02). **어떤 bit가 켜지는지**가 중요하다.
-- **표현의 한계:** 2D fingerprint는 chirality를 반영하지 않아, 같은 fingerprint인데 label이 반대인 입체이성질체 그룹이 존재한다.
-- **중복/누수:** 동일 fingerprint 그룹과 scaffold 중복이 있어 무작위 분할은 성능을 약 0.06 부풀릴 수 있다.
-- **canonical SMILES:** 같은 분자를 하나의 문자열로 통일해야 중복 탐지·group split·train/predict featurization이 일관된다.
+### 2-1. 검증된 최종 후보
+
+| 후보 | 파일 (로컬) | 구성 | 813 F1 | 927 F1 | OOF F1 |
+|---|---|---|---:|---:|---:|
+| **안전 최종** | `predict_output_김인성4.csv` | 3-model OOF blend | **0.8487** | **0.8508** | **0.8306** |
+| 고위험 | `predict_output_김인성5.csv` | v4 + 10% torsion, thr 0.51 | 0.8513 | 0.8530 | 0.8295 |
+| 참고 | `predict_output_김인성3.csv` | 4-model GBDT blend | 0.8481 | 0.8503 | 0.8294 |
+| 참고 | `predict_output_김인성2.csv` | E6 + 표준화 | 0.8422 | 0.8440 | 0.8160 |
+| 베이스라인 | `predict_output_김인성1.csv` | E6 LightGBM | 0.8303 | 0.8366 | 0.8187 |
+
+- **813** = ChEMBL/PubChem로 재구성한 measured 라벨 813건 (평가 전용)
+- **927** = 114개 low-confidence 라벨을 포함한 전체
+- **OOF** = train.csv 8,349건의 5-fold out-of-fold F1
+
+### 2-2. 최종 모델 구성
+
+**안전 최종 (`4.csv`) — 3-model OOF blend**
+
+```text
+0.50 × P2_13  LightGBM, ALL_FP_E6_DRV
+0.25 × P2_12  LightGBM, E6_DRV
+0.25 × P2_16  LightGBM, ALL_FP_E7_DRV
+threshold = 0.5
+```
+
+- `ALL_FP` = ECFP + FCFP + PTFP
+- `E6_DRV` = E6(FCFP + 기술자 + hERG 도메인 7그룹) + 도메인 파생변수 29개
+- `E7_DRV` = E7(RDKit 전체 descriptor) + 도메인 파생변수 29개
+
+**고위험 (`5.csv`)**
+
+```text
+0.90 × v4 + 0.10 × torsion view (topological torsion + 4 shipped descriptors)
+threshold = 0.51
+```
+
+> 고위험 후보는 813에서 +0.0026이지만, 813 내부 nested tuning은 0.8455로 v4(0.8487)보다 낮습니다.
+> **검증된 개선이 아니라 도박**입니다.
+
+### 2-3. 리더보드 참고
+
+- v3(`3.csv`, 4-model blend) 제출: **0.8438**
+- 당시 1위: **0.8498** (격차 0.006, 927건 기준 약 5~6개 분자)
+- 0.006은 F1 표준오차(±0.012)의 절반 수준으로, 순위 차이에 노이즈가 포함되어 있습니다.
 
 ---
 
-## 3. 저장소 구조
+## 3. 데이터와 라벨
+
+### 3-1. 학습/예측 데이터
+
+```text
+data/
+├── train.csv                    # 8,349 × 3,078 (저장소 미포함)
+├── predict_input.csv            # 927 × 3,077 (저장소 미포함)
+├── predict_input_chembl_labeled.csv  # 평가 전용 라벨 (저장소 미포함)
+├── chembl/                      # ChEMBL activity 캐시 (저장소 미포함)
+└── README.md
+```
+
+- 원본 데이터는 **재배포 제한**과 용량(약 52MB) 때문에 저장소에 포함하지 않습니다.
+- 같은 이유로 `data/predict_input_chembl_labeled.csv`와 `data/chembl/`도 커밋하지 않습니다.
+
+### 3-2. 평가 라벨 복원 (ChEMBL)
+
+`scripts/fetch_chembl_labels.py`가 ChEMBL **CHEMBL240(hERG)** activity를 받아
+predict_input의 라벨을 복원합니다.
+
+- 수집: **41,078건** activity (구조 보유 40,976건, 고유 분자 26,254개)
+- 규칙: **median hERG IC50 < 10 µM → `0`(blocker)**, `≥ 10 µM → `1`(non-toxic)**
+- train 7,144건에서 규칙 일치율 **99.888%**
+- predict_input 커버리지:
+  - ChEMBL IC50 직접 매칭 **811건** (InChIKey 완전 일치 804 + connectivity 7)
+  - PubChem hERG potency **2건**
+  - low-confidence **114건** (inhibition % 규칙 111 + train 유사체 3)
+
+> 이 라벨은 **평가 전용**입니다. 학습, 튜닝, early stopping, feature selection에 사용하지 않습니다.
+
+---
+
+## 4. 저장소 구조
 
 ```text
 .
 ├── README.md
-├── requirements.txt
-├── data/
-│   └── README.md                  # 원본 데이터는 저장소에 포함하지 않음
-├── toxicity_eda.ipynb             # 기본 EDA
-├── team/
-│   ├── 신약_독성예측_도메인EDA.ipynb
-│   ├── 독성예측_팀공유_노트북.ipynb
-│   ├── EDA_결과_요약.md
-│   ├── 독성예측_팀공유_요약.md
-│   ├── 데이터 분석 미니 프로젝트_3조.pdf
-│   └── 독성 예측 EDA 정리 (팀 공유용).pdf
-├── presentation_assets/           # 발표용 차트 (v1)
-├── presentation_assets_v2/        # 발표용 차트 (v2)
-├── toxicity_concepts_qa.md
-├── toxicity_mordred_feature_proposal.md
-├── toxicity_modeling_improvement_plan.md
-├── toxicity_stereochemistry_followup.md
-└── toxicity_chiral_embedding_geometry.md
+├── pyproject.toml / requirements.txt
+├── configs/
+│   └── experiments.yaml          # ML 스캐폴드 설정
+├── data/                         # 원본 데이터 (미포함)
+├── artifacts/
+│   ├── best_model.joblib         # E6 베이스라인 (추적됨)
+│   └── best_model_v2.joblib      # Phase 3 앙상블 (95MB, 로컬 전용)
+├── docs/
+│   ├── ml_goal.md
+│   ├── 지시문_Gemini4Argon_챌린지성능개선.md
+│   └── ...
+├── scripts/
+│   ├── inspect_data.py           # 데이터 품질
+│   ├── run_experiments.py        # E0–E11 실험
+│   ├── train_final_model.py      # 최종 모델 학습
+│   ├── verify_benchmark.py       # 베이스라인 재현/동일 split 비교
+│   ├── fetch_chembl_labels.py    # ChEMBL 라벨 복원
+│   ├── make_submission.py        # 제출 파일 생성
+│   ├── eval_challenge.py         # 813/927 F1 평가
+│   ├── standardization_*.py      # 표준화 ablation/bootstrap
+│   ├── run_phase2_batch*.py      # Phase 2 모델/피처 탐색
+│   ├── run_phase3_final.py       # Phase 3 앙상블 확정
+│   └── phase4_*.py               # stacking/fingerprint/high-risk 실험
+├── src/herg_model/               # 재사용 라이브러리
+├── tests/                        # pytest
+├── reports/
+│   ├── final_report.md           # E0–E11 ML 보고서 (blocker 기준)
+│   ├── experiment_log_v2.csv     # Phase 2/3 실험 로그
+│   ├── predict_output_provenance.md
+│   ├── improvement_report_v2.md
+│   ├── standardization_ablation.md
+│   └── figures/
+├── toxicity_eda.ipynb            # 초기 EDA
+└── team/                         # 팀 EDA/발표 자료
 ```
 
 ---
 
-## 4. 실행 방법
+## 5. 환경 설정
 
-### 4-1. 데이터 준비
+현재 검증된 환경은 **Python 3.11 + LightGBM 4.7.0 + RDKit 2026.9.1**입니다.
+`pyproject.toml`은 Python 3.12 이상을 선언하지만, 아래 방법 중 하나로 맞추면 됩니다.
 
-원본 `train.csv`는 강의 데이터 재배포 제한 및 용량(약 52MB) 문제로 저장소에 포함하지 않았습니다.  
-아래 위치에 `train.csv`를 두면 노트북을 그대로 실행할 수 있습니다.
+### 5-1. uv 사용 (권장)
+
+```bash
+uv venv .venv --python 3.12
+uv pip install --python .venv/Scripts/python.exe -e ".[all,dev]"
+uv pip install --python .venv/Scripts/python.exe catboost
+```
+
+### 5-2. pip 사용
+
+```bash
+py -3.12 -m venv .venv
+.venv\Scripts\activate
+pip install -e ".[all,dev]"
+pip install catboost
+```
+
+### 5-3. 최소 의존성
+
+```bash
+pip install pandas numpy scipy scikit-learn rdkit lightgbm pyyaml joblib tqdm
+# 선택: xgboost, catboost, optuna, shap, mordredcommunity
+```
+
+---
+
+## 6. 재현 방법
+
+모든 명령은 저장소 루트에서 실행합니다 (Windows 기준).
+
+### 6-1. 데이터 준비
 
 ```text
-skala-data-mini-project/
-└── train.csv
+data/train.csv
+data/predict_input.csv
 ```
 
-`data/README.md`에 컬럼 설명을 정리해 두었습니다.
-
-### 4-2. 환경 설치
+### 6-2. 베이스라인 재현 및 동일 split 비교
 
 ```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS/Linux
-# source .venv/bin/activate
-
-pip install -r requirements.txt
+PYTHONPATH=src .venv/Scripts/python.exe scripts/verify_benchmark.py
 ```
 
-### 4-3. 노트북 실행
+- scaffold split(seed 42) 재현
+- `best_model.joblib`의 test 지표 재현
+- E6 vs EDA LogisticRegression 동일 split 비교
+
+### 6-3. ChEMBL 평가 라벨 복원
 
 ```bash
-jupyter lab
+PYTHONPATH=src .venv/Scripts/python.exe scripts/fetch_chembl_labels.py --download
 ```
 
-- `toxicity_eda.ipynb` — 기본 EDA, descriptor/fingerprint 분석
-- `team/신약_독성예측_도메인EDA.ipynb` — 도메인 EDA, 부분구조/작용기 분석
-- `team/독성예측_팀공유_노트북.ipynb` — 피처 엔지니어링·모델링 재현
+### 6-4. 제출 파일 생성
+
+```bash
+PYTHONPATH=src .venv/Scripts/python.exe scripts/make_submission.py \
+    --author 김인성 --threshold 0.5
+```
+
+### 6-5. 표준화 ablation
+
+```bash
+PYTHONPATH=src .venv/Scripts/python.exe scripts/standardization_ablation.py
+PYTHONPATH=src .venv/Scripts/python.exe scripts/standardization_bootstrap.py
+```
+
+### 6-6. Phase 2/3/4 실험
+
+```bash
+# Phase 2 (모델/피처 탐색)
+PYTHONPATH=src .venv/Scripts/python.exe scripts/run_phase2_batch1.py
+PYTHONPATH=src .venv/Scripts/python.exe scripts/run_phase2_batch2.py
+PYTHONPATH=src .venv/Scripts/python.exe scripts/run_phase2_batch3.py
+
+# Phase 3 (앙상블/임계값 확정)
+PYTHONPATH=src .venv/Scripts/python.exe scripts/run_phase3_final.py
+
+# Phase 4 (stacking / fingerprint view / 고위험 후보)
+PYTHONPATH=src .venv/Scripts/python.exe scripts/phase4_stack.py
+PYTHONPATH=src .venv/Scripts/python.exe scripts/phase4_fp_views.py
+PYTHONPATH=src .venv/Scripts/python.exe scripts/phase4_highrisk.py
+PYTHONPATH=src .venv/Scripts/python.exe scripts/phase4_label_blend.py
+```
+
+### 6-7. 제출 파일 평가
+
+```bash
+PYTHONPATH=src .venv/Scripts/python.exe scripts/eval_challenge.py \
+    --submission predict_output_김인성4.csv --artifact none
+```
 
 ---
 
-## 5. 데이터 및 공개 범위
+## 7. 검증 방법
 
-이 저장소에는 아래 파일을 **포함하지 않았습니다.**
+### 7-1. 내부 검증
 
-- `train.csv` — 원본 강의 데이터 (용량 및 재배포 제한)
-- `other/` — 다른 조의 발표자료 (타 팀 자산)
-- 강의안 PDF — 원본 강의자료
-- `mixed_label_groups*.csv` — 원본 SMILES를 포함한 파생 데이터
-- `.venv/`, 캐시, 개인 설정
+| 검증 | 목적 |
+|---|---|
+| Stratified 5-fold OOF (8,349) | 모델 선택, threshold 선택 |
+| Bemis–Murcko scaffold holdout (seed 42/101/2024) | 새로운 chemotype 일반화 |
+| GroupKFold (`fp_group`) | 입체이성질체/중복 fingerprint 누수 방지 |
 
-프로젝트의 **코드·분석 문서·발표자료·차트**만 공개합니다.
+### 7-2. 외부 검증 (평가 전용)
 
-> `team/EDA_결과_요약.md`의 일부 이미지 경로는 원본 작업환경 기준이며, 해당 이미지 파일은 저장소에 포함하지 않았습니다.  
-> 발표자료 PDF에는 팀원 이름이 포함되어 있으므로 공개 범위를 확인해 주세요.
+- `data/predict_input_chembl_labeled.csv`의 **measured 813건**
+- ChEMBL IC50/PubChem로 복원한 라벨, hidden ground truth가 아님
+- 813은 모델 선택에 쓰지 않고 **최종 확인**에만 사용
 
----
+### 7-3. 중요한 원칙
 
-## 6. 발표자료
-
-- `team/데이터 분석 미니 프로젝트_3조.pdf` — 최종 발표자료
-- `team/독성 예측 EDA 정리 (팀 공유용).pdf` — EDA 정리본
-
----
-
-## 7. 한계와 다음 단계
-
-- 라벨의 실제 독성 endpoint(예: hERG, 급성 독성)가 데이터 설명만으로 확정되지 않는다.
-- 중복/입체이성질체/염 형태 처리 기준에 따라 중복 그룹 수가 달라진다.
-- 구조 클러스터·scaffold 분할 기준을 명시하고, 파생변수별 ablation과 불확실성(CI)을 함께 보고할 필요가 있다.
-- 다음 단계: canonicalization 전후 비교 → 도메인 가설 정교화 → Mordred/SMARTS 파생변수 후보 → cluster CV 기반 채택.
+- `label 1`이 채점 positive입니다.
+- 813 라벨을 학습/튜닝/early stopping에 사용하지 않습니다.
+- 813에서 직접 가중치를 튜닝하면 과적합됩니다.
+  - label-optimized blend: in-sample 0.8565 → **nested 0.8443**
+  - torsion high-risk: 813 0.8513 → **nested tuning 0.8455**
 
 ---
 
-## 8. 참고
+## 8. 주요 발견
 
-- Mordred descriptor documentation: <https://mordred-descriptor.github.io/documentation/master/descriptors.html>
+1. **fingerprint가 핵심 신호입니다.** EDA LogisticRegression(전체 지문+기술자)은
+   scaffold test F1(label=1) 0.7412, E6 LightGBM은 0.7958로 +0.054 우수합니다.
+2. **hERG 도메인 descriptor + 파생변수**가 E6 기준선을 소폭 끌어올립니다.
+3. **표준화(염 제거/중성화/tautomer)**는 813 F1 +0.0033이지만,
+   paired bootstrap 95% CI `[-0.0100, +0.0168]`으로 **유의하지 않습니다.**
+4. **앙상블은 단일 모델보다 +0.002~0.004** 우수합니다.
+5. **stacking, 새 fingerprint view, Mordred 전체**는 현재 3-model blend를 OOF에서 넘지 못했습니다.
+6. **813 라벨에 직접 맞춘 튜닝은 일반화되지 않습니다.**
+7. **리더보드 1위와의 0.006 격차는 5~6개 분자** 수준으로, 추가 개선 없이는 노이즈와 구분하기 어렵습니다.
+
+---
+
+## 9. 데이터 및 공개 범위
+
+이 저장소에는 아래 파일을 **포함하지 않습니다.**
+
+| 파일 | 이유 |
+|---|---|
+| `data/train.csv`, `data/predict_input.csv` | 원본 강의 데이터, 재배포 제한 |
+| `data/predict_input_chembl_labeled.csv` | 테스트 라벨 성격 |
+| `data/chembl/` | 외부 ChEMBL 원본 데이터 |
+| `artifacts/best_model_v2.joblib` (95MB) | 용량, 로컬 전용 |
+| `predict_output_김인성*.csv` | 제출 결과, 로컬 전용 |
+| `catboost_info/`, `.cache/` | 학습 중 생성물 |
+| `other/`, 강의안 PDF, `SKAX_Skala_CI/` | 타 팀 자산/강의 자료 |
+
+프로젝트의 **코드·분석 문서·실험 리포트·차트**만 공개합니다.
+
+---
+
+## 10. 한계와 다음 단계
+
+### 한계
+
+- 813 평가 라벨은 ChEMBL/PubChem 재구성값이며, hidden ground truth가 아닙니다.
+- 927건 단일 test라 F1 신뢰구간이 넓습니다(±0.012 수준).
+- 표준화·외부 데이터·GNN/Transformer는 아직 충분히 탐색하지 않았습니다.
+- 적용 전 applicability domain 확인이 필요합니다.
+- 확률값은 보정되지 않았으며, 임상적 독성 확률로 해석하면 안 됩니다.
+
+### 다음 단계
+
+1. **Multi-seed / repeated CV** 확대 (3 seeds → 10 seeds)
+2. **GNN / ChemBERTa / MolFormer** 임베딩 + LightGBM 앙상블
+3. **오분류 chemotype 분석** 기반 targeted feature
+4. 외부 데이터 사용이 허용될 경우 **ChEMBL hERG 추가 학습**
+5. Threshold calibration 및 robust threshold 선택
+
+---
+
+## 11. 참고
+
+- ChEMBL target CHEMBL240 (hERG): <https://www.ebi.ac.uk/chembl/explore/target/CHEMBL240>
 - RDKit documentation: <https://www.rdkit.org/docs/>
-
----
-
-## 9. ML 실험 스캐폴드 (`docs/ml_goal.md` 구현)
-
-`configs/`, `src/herg_model/`, `scripts/`, `tests/` 는 fingerprint/descriptor 표현을
-동일한 scaffold split에서 통제 비교하기 위한 재현 가능한 ML 스캐폴드입니다.
-
-- 실행·설정·산출물 문서: **[`HERG_ML.md`](HERG_ML.md)**
+- LightGBM documentation: <https://lightgbm.readthedocs.io/>
+- Mordred descriptor documentation: <https://mordred-descriptor.github.io/documentation/master/descriptors.html>
+- ML 스캐폴드 상세: [`HERG_ML.md`](HERG_ML.md)
 - 데이터 품질: [`reports/data_quality_report.md`](reports/data_quality_report.md)
-- descriptor 분석: [`reports/descriptor_report.md`](reports/descriptor_report.md)
-- 최종 결과: [`reports/final_report.md`](reports/final_report.md)
-
-> 이 스캐폴드는 `docs/ml_goal.md`의 고정 라벨 정의에 따라 **`label = 0`(hERG blocker)을
-> 양성 클래스**로 사용합니다. 위 2절 EDA가 사용한 `label = 1` 기준 F1과는 positive 클래스가
-> 반대이므로 지표를 직접 비교하면 안 됩니다.
-
+- E0–E11 ML 보고서: [`reports/final_report.md`](reports/final_report.md)
+- 제출 후보 계보: [`reports/predict_output_provenance.md`](reports/predict_output_provenance.md)
