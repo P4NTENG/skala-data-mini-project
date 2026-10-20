@@ -47,3 +47,9 @@ Thumbs.db
 .vscode/
 .idea/
 *.log
+
+# Large / sensitive ML artifacts (local only)
+artifacts/best_model_v2.joblib
+catboost_info/
+data/chembl/
+data/predict_input_chembl_labeled.csv

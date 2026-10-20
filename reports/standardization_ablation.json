@@ -1,0 +1,270 @@
+{
+  "generated_at": "2026-10-20T03:08:37.596519+00:00",
+  "results": {
+    "raw": {
+      "n_features_raw": 1244,
+      "n_features_kept": 1222,
+      "n_transform_fail_train": 0,
+      "n_transform_fail_predict": 0,
+      "n_unique_train_smiles": 8348,
+      "n_unique_predict_smiles": 927,
+      "oof_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.818665219750407,
+        "accuracy": 0.7998562702120015,
+        "roc_auc": 0.8805323041045736
+      },
+      "oof_at_opt": {
+        "threshold": 0.4,
+        "f1_label1": 0.8246296101712725,
+        "accuracy": 0.8000958198586657,
+        "roc_auc": 0.8805323041045736
+      },
+      "oof_threshold": 0.4,
+      "scaffold_val_threshold": 0.24000000000000002,
+      "scaffold_test_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.7908992416034669,
+        "accuracy": 0.7688622754491018,
+        "roc_auc": 0.8454276365234084
+      },
+      "scaffold_test_at_val_threshold": {
+        "threshold": 0.24000000000000002,
+        "f1_label1": 0.7872340425531915,
+        "accuracy": 0.7365269461077845,
+        "roc_auc": 0.8454276365234084
+      },
+      "predict813_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8389339513325609,
+        "accuracy": 0.8290282902829028,
+        "roc_auc": 0.8935526507251298
+      },
+      "predict813_at_oof_threshold": {
+        "threshold": 0.4,
+        "f1_label1": 0.8378378378378378,
+        "accuracy": 0.8228782287822878,
+        "roc_auc": 0.8935526507251298
+      },
+      "predict927_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8420019627085378,
+        "accuracy": 0.8263214670981661,
+        "roc_auc": 0.8926742091635709
+      },
+      "elapsed_sec": 361.8
+    },
+    "strip_neutral": {
+      "n_features_raw": 1244,
+      "n_features_kept": 1222,
+      "n_transform_fail_train": 0,
+      "n_transform_fail_predict": 0,
+      "n_unique_train_smiles": 8326,
+      "n_unique_predict_smiles": 927,
+      "oof_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8160295395308428,
+        "accuracy": 0.7971014492753623,
+        "roc_auc": 0.8809785376471093
+      },
+      "oof_at_opt": {
+        "threshold": 0.255,
+        "f1_label1": 0.8234939759036145,
+        "accuracy": 0.7894358605821057,
+        "roc_auc": 0.8809785376471093
+      },
+      "oof_threshold": 0.255,
+      "scaffold_val_threshold": 0.18500000000000003,
+      "scaffold_test_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.7811158798283262,
+        "accuracy": 0.755688622754491,
+        "roc_auc": 0.843745302762265
+      },
+      "scaffold_test_at_val_threshold": {
+        "threshold": 0.18500000000000003,
+        "f1_label1": 0.7943127962085308,
+        "accuracy": 0.7401197604790419,
+        "roc_auc": 0.843745302762265
+      },
+      "predict813_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8341013824884793,
+        "accuracy": 0.8228782287822878,
+        "roc_auc": 0.8921581704418684
+      },
+      "predict813_at_oof_threshold": {
+        "threshold": 0.255,
+        "f1_label1": 0.8369098712446352,
+        "accuracy": 0.8130381303813038,
+        "roc_auc": 0.8921581704418684
+      },
+      "predict927_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8351219512195122,
+        "accuracy": 0.8176914778856527,
+        "roc_auc": 0.8910981650343351
+      },
+      "elapsed_sec": 335.0
+    },
+    "tautomer": {
+      "n_features_raw": 1244,
+      "n_features_kept": 1223,
+      "n_transform_fail_train": 0,
+      "n_transform_fail_predict": 0,
+      "n_unique_train_smiles": 8288,
+      "n_unique_predict_smiles": 926,
+      "oof_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8183494198026244,
+        "accuracy": 0.7993771709186729,
+        "roc_auc": 0.8794395350658253
+      },
+      "oof_at_opt": {
+        "threshold": 0.275,
+        "f1_label1": 0.8246799072487145,
+        "accuracy": 0.7917115822254163,
+        "roc_auc": 0.8794395350658253
+      },
+      "oof_threshold": 0.275,
+      "scaffold_val_threshold": 0.22,
+      "scaffold_test_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.7830802603036876,
+        "accuracy": 0.7604790419161677,
+        "roc_auc": 0.8459710707967671
+      },
+      "scaffold_test_at_val_threshold": {
+        "threshold": 0.22,
+        "f1_label1": 0.7891682785299806,
+        "accuracy": 0.7389221556886227,
+        "roc_auc": 0.8459710707967671
+      },
+      "predict813_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8401400233372228,
+        "accuracy": 0.8314883148831488,
+        "roc_auc": 0.8931524955134111
+      },
+      "predict813_at_oof_threshold": {
+        "threshold": 0.275,
+        "f1_label1": 0.8264642082429501,
+        "accuracy": 0.8031980319803198,
+        "roc_auc": 0.8931524955134111
+      },
+      "predict927_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8402366863905325,
+        "accuracy": 0.8252427184466019,
+        "roc_auc": 0.8907416788622462
+      },
+      "elapsed_sec": 333.8
+    },
+    "strip_neutral_taut": {
+      "n_features_raw": 1244,
+      "n_features_kept": 1223,
+      "n_transform_fail_train": 0,
+      "n_transform_fail_predict": 0,
+      "n_unique_train_smiles": 8266,
+      "n_unique_predict_smiles": 926,
+      "oof_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8210526315789474,
+        "accuracy": 0.8024913163253085,
+        "roc_auc": 0.8818522381711965
+      },
+      "oof_at_opt": {
+        "threshold": 0.335,
+        "f1_label1": 0.8274513838872312,
+        "accuracy": 0.7991376212720086,
+        "roc_auc": 0.8818522381711965
+      },
+      "oof_threshold": 0.335,
+      "scaffold_val_threshold": 0.23500000000000001,
+      "scaffold_test_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.7922077922077922,
+        "accuracy": 0.770059880239521,
+        "roc_auc": 0.8454854486801484
+      },
+      "scaffold_test_at_val_threshold": {
+        "threshold": 0.23500000000000001,
+        "f1_label1": 0.7949709864603481,
+        "accuracy": 0.7461077844311377,
+        "roc_auc": 0.8454854486801484
+      },
+      "predict813_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8422273781902552,
+        "accuracy": 0.8327183271832719,
+        "roc_auc": 0.8943165834020469
+      },
+      "predict813_at_oof_threshold": {
+        "threshold": 0.335,
+        "f1_label1": 0.8412874583795783,
+        "accuracy": 0.8241082410824109,
+        "roc_auc": 0.8943165834020469
+      },
+      "predict927_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8439646712463199,
+        "accuracy": 0.8284789644012945,
+        "roc_auc": 0.892791474351758
+      },
+      "elapsed_sec": 342.8
+    },
+    "strip": {
+      "n_features_raw": 1244,
+      "n_features_kept": 1222,
+      "n_transform_fail_train": 0,
+      "n_transform_fail_predict": 0,
+      "n_unique_train_smiles": 8326,
+      "n_unique_predict_smiles": 927,
+      "oof_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8174404697183865,
+        "accuracy": 0.7988980716253443,
+        "roc_auc": 0.8815244161344078
+      },
+      "oof_at_opt": {
+        "threshold": 0.335,
+        "f1_label1": 0.8255213710510014,
+        "accuracy": 0.7975805485686909,
+        "roc_auc": 0.8815244161344078
+      },
+      "oof_threshold": 0.335,
+      "scaffold_val_threshold": 0.23,
+      "scaffold_test_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.7926565874730022,
+        "accuracy": 0.770059880239521,
+        "roc_auc": 0.8508157295316058
+      },
+      "scaffold_test_at_val_threshold": {
+        "threshold": 0.23,
+        "f1_label1": 0.7938044530493708,
+        "accuracy": 0.7449101796407186,
+        "roc_auc": 0.8508157295316058
+      },
+      "predict813_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.8373702422145328,
+        "accuracy": 0.8265682656826568,
+        "roc_auc": 0.8944742203036329
+      },
+      "predict813_at_oof_threshold": {
+        "threshold": 0.335,
+        "f1_label1": 0.8366445916114791,
+        "accuracy": 0.8179581795817958,
+        "roc_auc": 0.8944742203036329
+      },
+      "predict927_at_0.5": {
+        "threshold": 0.5,
+        "f1_label1": 0.837890625,
+        "accuracy": 0.8209277238403452,
+        "roc_auc": 0.89213478929791
+      },
+      "elapsed_sec": 272.7
+    }
+  }
+}

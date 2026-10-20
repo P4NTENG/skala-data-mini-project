@@ -1,0 +1,59 @@
+{
+  "n": 813,
+  "threshold": 0.5,
+  "n_bootstrap": 10000,
+  "variants": {
+    "raw": {
+      "f1": 0.8389339513325609,
+      "ci95": [
+        0.8115246098439376,
+        0.8645968385870448
+      ],
+      "accuracy": 0.8290282902829028,
+      "confusion_matrix_rows_true_cols_pred": [
+        [
+          312,
+          77
+        ],
+        [
+          62,
+          362
+        ]
+      ]
+    },
+    "strip_neutral_taut": {
+      "f1": 0.8422273781902552,
+      "ci95": [
+        0.8153291416278712,
+        0.8676807203144581
+      ],
+      "accuracy": 0.8327183271832719,
+      "confusion_matrix_rows_true_cols_pred": [
+        [
+          314,
+          75
+        ],
+        [
+          61,
+          363
+        ]
+      ]
+    }
+  },
+  "paired_difference": {
+    "name": "strip_neutral_taut - raw",
+    "point": 0.0032934268576942927,
+    "mean": 0.0033547765970584364,
+    "ci95": [
+      -0.01003567769884477,
+      0.01683830988383283
+    ],
+    "p_le_0": 0.3139,
+    "p_ge_0": 0.6951
+  },
+  "mcnemar": {
+    "raw_correct_combined_wrong": 16,
+    "raw_wrong_combined_correct": 19,
+    "p_value": 0.735878800856881
+  }
+}

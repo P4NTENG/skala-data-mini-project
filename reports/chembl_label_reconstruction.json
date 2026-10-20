@@ -1,0 +1,45 @@
+{
+  "target": "CHEMBL240",
+  "chembl_activity_records": 40976,
+  "rule": {
+    "ic50_threshold_nm": 10000.0,
+    "inhibition_threshold_pct": 60.0,
+    "train_validation": {
+      "n_train_matched": 7144,
+      "accuracy": 0.9988801791713325,
+      "confusion_actual_rows_predicted_cols": [
+        [
+          3459,
+          5
+        ],
+        [
+          3,
+          3677
+        ]
+      ],
+      "n_disagreements": 8,
+      "threshold_nm": 10000.0
+    }
+  },
+  "input": {
+    "path": "data/predict_input.csv",
+    "n_rows": 927,
+    "match": {
+      "full_inchikey": 804,
+      "none": 116,
+      "connectivity": 7
+    },
+    "source": {
+      "chembl_ic50": 804,
+      "chembl_inhibition": 111,
+      "chembl_ic50_connectivity": 7,
+      "train_analog": 3,
+      "pubchem_herg_potency": 2
+    },
+    "label_distribution": {
+      "0": 423,
+      "1": 504
+    },
+    "chembl_label_coverage": 811
+  }
+}
